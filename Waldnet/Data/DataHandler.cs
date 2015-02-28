@@ -19,7 +19,7 @@ namespace Waldnet.Data
         {
         }
 
-        public async Task<List<NewsDay>> GetRegionalNews()
+        public async Task<List<NewsDay>> GetRegionalNews(string URL = "http://waldnet.nl/regionaal.php")
         {
             List<NewsDay> NewsDays = new List<NewsDay>();
 
@@ -29,7 +29,7 @@ namespace Waldnet.Data
                 try
                 {
                     var client = new HttpClient();
-                    var response = await client.GetAsync(new Uri("http://waldnet.nl/regionaal.php"));
+                    var response = await client.GetAsync(new Uri(URL));
                     string Result = await response.Content.ReadAsStringAsync();
 
                     if (Result != null && Result.Length > 0)
