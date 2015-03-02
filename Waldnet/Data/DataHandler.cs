@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Waldnet.Data.DataModel;
+using System.Net;
 
 namespace Waldnet.Data
 {
@@ -19,23 +20,43 @@ namespace Waldnet.Data
         {
         }
 
-        public async Task<List<NewsDay>> GetRegionalNews(string URL = "http://waldnet.nl/regionaal.php")
+        public async Task<List<NewsDay>> GetRegionalNews()
         {
             List<NewsDay> NewsDays = new List<NewsDay>();
+
+            try
+            {
+                NewsDays = PageParser.ParseRegionalNews(await this.GetDataFromURL());
+            }
+            catch(Exception)
+            {
+
+            }
+           
+            return NewsDays;
+
+        }
+
+        public async Task<NewsItem> GetNewsItemFromURL(string URL)
+        {
+            return await NewsItemParser.ParseNews(await this.GetDataFromURL(URL));
+        }
+
+        public async Task<string> GetDataFromURL(string URL = "http://waldnet.nl/regionaal.php")
+        {
+            string Output = string.Empty;
 
             if (this.DataSemaphore.WaitOne(10000))
             {
 
                 try
                 {
-                    var client = new HttpClient();
+                    var client = new HttpClient();       
+                    
                     var response = await client.GetAsync(new Uri(URL));
-                    string Result = await response.Content.ReadAsStringAsync();
 
-                    if (Result != null && Result.Length > 0)
-                    {
-                        NewsDays = PageParser.ParseRegionalNews(Result);
-                    }
+                    var ByteArray = await response.Content.ReadAsByteArrayAsync();
+                    Output = Encoding.GetEncoding("iso-8859-1").GetString(ByteArray, 0, ByteArray.Length);
                 }
                 catch (HttpRequestException)
                 {
@@ -43,7 +64,7 @@ namespace Waldnet.Data
                 }
                 catch (TaskCanceledException)
                 {
-                   // ErrorDialog.ShowError("Geen verbinding", "Geen verbinding naar de server. Controleer uw internet verbinding.");
+                    // ErrorDialog.ShowError("Geen verbinding", "Geen verbinding naar de server. Controleer uw internet verbinding.");
                 }
                 //catch (Exception e)
                 //{
@@ -55,11 +76,19 @@ namespace Waldnet.Data
                 //    }
                 //}
 
-                
+
             }
 
-            this.DataSemaphore.Release();
-            return NewsDays;
+            try
+            {
+                this.DataSemaphore.Release();
+            }
+            catch
+            {
+
+            }
+
+            return Output;
 
         }
              

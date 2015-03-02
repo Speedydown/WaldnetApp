@@ -29,6 +29,11 @@ namespace Waldnet.Data
 
                 int IndexOfEndOfName = Input.IndexOf("</b><br><br>");
 
+                if (IndexOfEndOfName == -1)
+                {
+                    break;
+                }
+
                 Name = Input.Substring(StartIndexOFURL, IndexOfEndOfName - StartIndexOFURL);
                 Input = Input.Substring(Input.IndexOf("</b><br><br>") + "</b><br><br>".Length);
 

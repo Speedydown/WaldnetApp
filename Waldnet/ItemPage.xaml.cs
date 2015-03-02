@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Waldnet.Data.DataModel;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -68,6 +70,11 @@ namespace Waldnet
         /// session.  The state will be null the first time a page is visited.</param>
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            string URL = (string)e.NavigationParameter;
+
+            NewsItem NI = await DataHandler.Instance.GetNewsItemFromURL(URL);
+
+            LayoutRoot.DataContext = NI;
         }
 
         /// <summary>
@@ -109,5 +116,20 @@ namespace Waldnet
         }
 
         #endregion
+
+        private void ImagesListview_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Content.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            FullImage.Source = new BitmapImage(new Uri(e.ClickedItem as string));
+            FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            FullImage.Visibility = Windows.UI.Xaml.Visibility.Visible;
+        }
+
+        private void FullImage_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Content.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            FullImage.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        }
     }
 }

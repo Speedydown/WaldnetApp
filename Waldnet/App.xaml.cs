@@ -30,6 +30,7 @@ namespace Waldnet
         public App()
         {
             this.InitializeComponent();
+            
             this.Suspending += this.OnSuspending;
         }
 
@@ -41,6 +42,7 @@ namespace Waldnet
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {

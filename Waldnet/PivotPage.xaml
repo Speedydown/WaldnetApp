@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:Waldnet.Data"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="White">
     <Page.Transitions>
         <TransitionCollection>
             <NavigationThemeTransition>
@@ -18,56 +18,76 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Grid>
-        <Pivot x:Uid="Pivot" Title="Waldnet" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True">
+    <Grid Background="White">
+        <Pivot x:Uid="Pivot" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A" SelectionChanged="pivot_SelectionChanged">
             <PivotItem
-                Margin="19,14.5,0,0"
-                Header="Regionaal"
+                Margin="0,5,0,0"
+                
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <PivotItem.Header>
+                    <TextBlock Text="Regionaal" Foreground="#FF07519A" FontWeight="ExtraBold"/>
+                </PivotItem.Header>
+                
                 <ListView
                     x:Name="RegionalNews"
-                    IsItemClickEnabled="True"
-                    ItemClick="ItemView_ItemClick"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Rectangle x:Name="fill" Height="15" Margin="0,0,0,8" Fill="#FF0061B0"/>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
-                                <TextBlock
+                            <StackPanel HorizontalAlignment="Stretch" Grid.Column="0" >
+                                <Grid Background="#FFDCE7F3">
+                                    <TextBlock
+                                        Margin="9,0,19,0"
                                     Text="{Binding DayName}"
                                     TextWrapping="Wrap"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{ThemeResource GroupHeaderTextBlockStyle}"
-                                    Margin="0,0,19,0"/>
+                                    FontSize="25"
+                                    Foreground="#FF07519A" FontWeight="Bold"/>
+                                </Grid>
                                 <ListView
+                                    Margin="0,0,0,5"
                                     ItemsSource="{Binding NewsLinks}"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Margin="0,0,0,9.5">
-                                                <TextBlock
+                                            <TextBlock
                                     Text="{Binding Name}"
-                                    TextWrapping="Wrap"
+                                    TextWrapping="NoWrap"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{ThemeResource ListViewItemTextBlockStyle}"
-                                    Margin="0,0,19,0"/>
-                                                <TextBlock
-                                    Text="{Binding URL}"
-                                    TextWrapping="WrapWholeWords"
-                                    Pivot.SlideInAnimationGroup="2" 
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True" 
-                                    Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"
-                                    Margin="0,0,19,0"/>
-                                            </StackPanel>
+                                    Foreground="#FF07519A" 
+                                                FontSize="17"
+                                    Margin="9,0,0,0"/>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Margin" Value="0"/>
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="Height" Value="25"/>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
                                 </ListView>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
             </PivotItem>
 
@@ -75,8 +95,10 @@
             <PivotItem
                 x:Uid="PivotItem2"
                 Margin="19,14.5,0,0"
-                Header="second"
                 >
+                <PivotItem.Header>
+                    <TextBlock Text="Ondernemend" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
+                </PivotItem.Header>
                 <!--Double line list no text wrapping-->
                 <ListView
                     ItemsSource="{Binding Items}"
@@ -106,12 +128,8 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton x:Uid="AddAppBarButton" x:Name="AddAppBarButton" Label="add" Icon="Add" Click="AddAppBarButton_Click" />
-            <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="SecondaryButton1" x:Name="SecondaryButton1" Label="secondary command 1" />
-                <AppBarButton x:Uid="SecondaryButton2" x:Name="SecondaryButton2" Label="secondary command 2" />
-            </CommandBar.SecondaryCommands>
+        <CommandBar Background="#FFDCE7F3" Foreground="#FF07519A">
+            <AppBarButton x:Uid="Search" x:Name="SearchButton" Label="Zoeken" Icon="Find" Click="SearchButton_Click" />
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

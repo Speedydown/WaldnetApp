@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Waldnet.Data.DataModel;
+using Windows.UI;
 
 namespace Waldnet
 {
@@ -78,7 +79,10 @@ namespace Waldnet
         /// </summary>
         private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
+            if (!Frame.Navigate(typeof(ItemPage), (e.ClickedItem as NewsLink).URL))
+            {
+               
+            }
         }
 
         /// <summary>
@@ -115,5 +119,31 @@ namespace Waldnet
         }
 
         #endregion
+
+        private void pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string hexaColor = "#DCE7F3";
+
+            foreach (PivotItem pi in pivot.Items)
+            {
+                (pi.Header as TextBlock).Foreground = new SolidColorBrush(Color.FromArgb(255,
+                Convert.ToByte(hexaColor.Substring(1, 2), 16),
+                Convert.ToByte(hexaColor.Substring(3, 2), 16),
+                Convert.ToByte(hexaColor.Substring(5, 2), 16)));
+            }
+
+
+            hexaColor = "#07519A";
+
+            ((pivot.SelectedItem as PivotItem).Header as TextBlock).Foreground = new SolidColorBrush(Color.FromArgb(255,
+                Convert.ToByte(hexaColor.Substring(1, 2), 16),
+                Convert.ToByte(hexaColor.Substring(3, 2), 16),
+                Convert.ToByte(hexaColor.Substring(5, 2), 16)));
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
