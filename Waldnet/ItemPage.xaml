@@ -49,6 +49,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <ListView Grid.Row="0"
                                     Margin="8,0,8,0"
@@ -63,7 +64,7 @@
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Foreground="Black" 
-                                                FontSize="14"/>
+                                                FontSize="17"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <ListView.ItemContainerStyle>
@@ -146,7 +147,7 @@
                                     Text="{Binding Content}"
                                     TextWrapping="WrapWholeWords"
                                     Foreground="Black" 
-                                                FontSize="13"/>
+                                                FontSize="14"/>
 
 
                                 </Grid>
@@ -164,6 +165,38 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
+
+
+                <Border Grid.Row="4" BorderBrush="#FF07519A" BorderThickness="1" Margin="2,5,2,5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="#FFDCE7F3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                        Grid.Column="0"
+                                            Margin="5,0"
+                                    Text="Reageren?"
+                                    TextWrapping="WrapWholeWords"
+                                    Foreground="#FF07519A" 
+                                                FontSize="15" FontWeight="Bold"/>
+                        </Grid>
+                        <TextBlock
+                                        Margin="2"
+                                        Grid.Row="1"
+                                    Text="Voor het geven van een reactie op bovenstaand nieuwsartikel dient u in te loggen op de website van wâldnet. Daar kunt u reageren op dit artikel. &#x0a;&#x0a;Klik hier om naar http://www.waldnet.nl te gaan."
+                                    TextWrapping="WrapWholeWords"
+                                    Foreground="Black" 
+                                                FontSize="14" Tapped="TextBlock_Tapped"/>
+                    </Grid>
+                </Border>
+
 
             </Grid>
         </ScrollViewer>

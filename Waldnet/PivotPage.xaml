@@ -19,6 +19,7 @@
     </Page.Transitions>
 
     <Grid Background="White">
+        <ProgressBar x:Name="DataProgressBar" Foreground="#FF07519A" IsIndeterminate="True" VerticalAlignment="Top"/>
         <Pivot x:Uid="Pivot" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A" SelectionChanged="pivot_SelectionChanged">
             <PivotItem
                 Margin="0,5,0,0"
@@ -27,7 +28,7 @@
                 <PivotItem.Header>
                     <TextBlock Text="Regionaal" Foreground="#FF07519A" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
-                
+
                 <ListView
                     x:Name="RegionalNews"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
@@ -73,7 +74,7 @@
                                             <Setter Property="BorderThickness" Value="0"/>
                                             <Setter Property="Margin" Value="0"/>
                                             <Setter Property="Padding" Value="0"/>
-                                            <Setter Property="Height" Value="25"/>
+                                            <Setter Property="Height" Value="30"/>
                                         </Style>
                                     </ListView.ItemContainerStyle>
                                 </ListView>
@@ -90,46 +91,167 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
             </PivotItem>
-
-            <!--Pivot item two-->
             <PivotItem
                 x:Uid="PivotItem2"
-                Margin="19,14.5,0,0"
+                Margin="0,5,0,0"
                 >
                 <PivotItem.Header>
                     <TextBlock Text="Ondernemend" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
-                <!--Double line list no text wrapping-->
                 <ListView
-                    ItemsSource="{Binding Items}"
+                    x:Name="OndernemendNieuwsList"
+                                    Margin="0,0,0,5"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
-                    Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Rectangle x:Name="fill" Height="15" Margin="0,0,0,8" Fill="#FF0061B0"/>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
-                                <TextBlock
-                                    Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
-                                <TextBlock
-                                    Text="{Binding Description}"
+                            <TextBlock
+                                    Text="{Binding Name}"
+                                    TextWrapping="NoWrap"
                                     Pivot.SlideInAnimationGroup="2"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
-                            </StackPanel>
+                                    Foreground="#FF07519A" 
+                                                FontSize="18" FontWeight="SemiBold"
+                                    Margin="9,0,0,0"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="Padding" Value="0"/>
+                            <Setter Property="Height" Value="30"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
+            </PivotItem>
+            <PivotItem
+                x:Uid="SearchPivot"
+                x:Name="SearchPivot"
+                Margin="0,5,0,0"
+                >
+                <PivotItem.Header>
+                    <TextBlock Text="Archief" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
+                </PivotItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Rectangle x:Name="fill" Grid.Row="0" Height="15" Fill="#FF0061B0"/>
+                    <TextBox x:Name="SearchTextbox" IsEnabled="True" IsReadOnly="False" Grid.Row="1" Margin="2,2" PlaceholderText="Vul hier uw zoekterm in" KeyDown="SearchTextbox_KeyDown"/>
+                    <ListView
+                    x:Name="SearchResultList"
+                        Grid.Row="2"
+                                    Margin="0,0,0,5"
+                    IsItemClickEnabled="True"
+                    ItemClick="SearchResultList_ItemClick"
+                    ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                        <ListView.HeaderTemplate>
+                            <DataTemplate>
+
+                            </DataTemplate>
+                        </ListView.HeaderTemplate>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Rectangle Margin="0,0,0,0" Fill="#FF07519A" HorizontalAlignment="Stretch" Height="1" Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="2"/>
+                                    
+                                    
+                                    <TextBlock
+                                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"
+                                    Text="{Binding NewsType}"
+                                    TextWrapping="NoWrap"
+                                    Pivot.SlideInAnimationGroup="3"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Foreground="#FF07519A" 
+                                                FontSize="18"
+                                    Margin="4,0,0,0"/>
+                                    <TextBlock
+                                        Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"
+                                    Text="{Binding Date}"
+                                    TextWrapping="NoWrap"
+                                    Pivot.SlideInAnimationGroup="3"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Foreground="#FF07519A" 
+                                                FontSize="18"
+                                    Margin="9,0,0,0"/>
+                                    <TextBlock
+                                        Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1"
+                                    Text=" - "
+                                    TextWrapping="NoWrap"
+                                    Pivot.SlideInAnimationGroup="3"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Foreground="#FF07519A" 
+                                                FontSize="18"
+                                    Margin="4,0,0,0"/>
+                                    <TextBlock
+                                        Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1"
+                                    Text="{Binding Plaats}"
+                                    TextWrapping="NoWrap"
+                                    Pivot.SlideInAnimationGroup="3"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Foreground="#FF07519A" 
+                                                FontSize="18"
+                                    Margin="4,0,0,0"/>
+                                    
+                                    
+                                    <TextBlock
+                                        Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"
+                                    Text="{Binding Text}"
+                                    TextWrapping="NoWrap"
+                                    Pivot.SlideInAnimationGroup="3"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Foreground="#FF07519A" 
+                                                FontSize="18" FontWeight="SemiBold"
+                                    Margin="4,0,0,10"/>
+                                </Grid>
+                                
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Height" Value="Auto"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid> 
             </PivotItem>
         </Pivot>
     </Grid>
 
     <Page.BottomAppBar>
         <CommandBar Background="#FFDCE7F3" Foreground="#FF07519A">
-            <AppBarButton x:Uid="Search" x:Name="SearchButton" Label="Zoeken" Icon="Find" Click="SearchButton_Click" />
+            <AppBarButton x:Uid="WaldnetButton" x:Name="WaldnetButton" Label="Wâldnet" Icon="World" Click="WaldnetButton_Click" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="PrivacyPolicyButton" x:Name="PrivacyPolicyButton" Label="Privacy policy"  Click="PrivacyPolicyButton_Click"/>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
+
     </Page.BottomAppBar>
 </Page>

@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Waldnet.Data.DataModel;
 using Windows.UI;
+using Windows.System;
 
 namespace Waldnet
 {
@@ -51,6 +52,8 @@ namespace Waldnet
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             this.RegionalNews.ItemsSource = await DataHandler.Instance.GetRegionalNews();
+            this.OndernemendNieuwsList.ItemsSource = await DataHandler.Instance.GetBusinessNews();
+            DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         /// <summary>
@@ -67,14 +70,6 @@ namespace Waldnet
         }
 
         /// <summary>
-        /// Adds an item to the list when the app bar button is clicked.
-        /// </summary>
-        private void AddAppBarButton_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        /// <summary>
         /// Invoked when an item within a section is clicked.
         /// </summary>
         private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
@@ -83,14 +78,6 @@ namespace Waldnet
             {
                
             }
-        }
-
-        /// <summary>
-        /// Loads the content for the second pivot item when it is scrolled into view.
-        /// </summary>
-        private async void SecondPivot_Loaded(object sender, RoutedEventArgs e)
-        {
-           
         }
 
         #region NavigationHelper registration
@@ -139,11 +126,48 @@ namespace Waldnet
                 Convert.ToByte(hexaColor.Substring(1, 2), 16),
                 Convert.ToByte(hexaColor.Substring(3, 2), 16),
                 Convert.ToByte(hexaColor.Substring(5, 2), 16)));
+
+            if ((pivot.SelectedItem as PivotItem).Name == "SearchPivot")
+            {
+                SearchTextbox.Background = new SolidColorBrush(Colors.White);
+            }
         }
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        private void PrivacyPolicyButton_Click(object sender, RoutedEventArgs e)
         {
+            Launcher.LaunchUriAsync(new Uri("http://waldnet.nl/wn/p/1/Copyright.html"));
+        }
 
+        private void SearchResultList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!Frame.Navigate(typeof(ItemPage), (e.ClickedItem as SearchResult).URL))
+            {
+
+            }
+        }
+
+        private async void SearchTextbox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+                SearchResultList.ItemsSource = await DataHandler.Instance.GetSearchResult(SearchTextbox.Text);
+
+                DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
+                var control = sender as Control;
+                var isTabStop = control.IsTabStop;
+                control.IsTabStop = false;
+                control.IsEnabled = false;
+                control.IsEnabled = true;
+                control.IsTabStop = isTabStop;
+            }
+        }
+
+        private void WaldnetButton_Click(object sender, RoutedEventArgs e)
+        {
+            Launcher.LaunchUriAsync(new Uri("http://waldnet.nl/"));
         }
     }
 }

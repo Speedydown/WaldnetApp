@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Waldnet.Data.DataModel;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.System;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -130,6 +131,11 @@ namespace Waldnet
             Content.Visibility = Windows.UI.Xaml.Visibility.Visible;
             FullImage.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        }
+
+        private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Launcher.LaunchUriAsync(new Uri("http://waldnet.nl"));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Waldnet.Data
 {
     internal static class NewsItemParser
     {
-        private static readonly string[] RemoveFilter = new string[] { "<br>", "<br />", "<br/>", "<p>", "<P>" };
+        private static readonly string[] RemoveFilter = new string[] { "<br>", "<br />", "<br/>", "<BR>", "<p>", "<P>", "<em>", "</em>", "<strong>", "</strong>" };
 
         public async static Task<NewsItem> ParseNews(string Input)
         {
@@ -261,7 +261,12 @@ namespace Waldnet.Data
                     break;
                 }
 
-                string Image = "http://waldnet.nl" + Input.Substring("src=".Length, Endpos - "src=".Length);
+                string Image = Input.Substring("src=".Length, Endpos - "src=".Length);
+
+                if (!Image.StartsWith("http"))
+                {
+                    Image = "http://waldnet.nl" + Image;
+                }
 
                 if (Image != string.Empty)
                 {
@@ -370,26 +375,31 @@ namespace Waldnet.Data
             return ReactionList;
         }
 
-        public static string URLParser(string Input)
+        public static string URLParser(string Input, bool noQuote = false)
         {
-            int IndexOfURL = Input.IndexOf("<a href=\"");
+            int IndexOfURL = noQuote ? Input.IndexOf("<a href=") : Input.IndexOf("<a href=\"");
 
             if (IndexOfURL == -1)
             {
+                if (!noQuote)
+                {
+                    return URLParser(Input, true);
+                }
+
                 return Input;
             }
 
             string Start = Input.Substring(0, IndexOfURL);
-            Input = Input.Substring(IndexOfURL + "<a href=\"".Length);
+            Input = Input.Substring(IndexOfURL + (noQuote ? "<a href=".Length : "<a href=\"".Length));
 
-            IndexOfURL = Input.IndexOf("\">");
+            IndexOfURL = (noQuote ? Input.IndexOf(">") : Input.IndexOf("\">"));
 
             if (IndexOfURL == -1)
             {
                 return Input;
             }
 
-            IndexOfURL += "\">".Length;
+            IndexOfURL += (noQuote ? ">".Length : "\">".Length);
 
             int EndOFURL = Input.IndexOf("</a>");
 
@@ -402,7 +412,7 @@ namespace Waldnet.Data
 
             string End = Input.Substring(EndOFURL + "</a>".Length);
 
-            return Start + Content + End;
+            return URLParser(Start + Content + End);
         }
 
         

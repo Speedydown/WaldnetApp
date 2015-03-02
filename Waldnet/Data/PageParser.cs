@@ -110,5 +110,44 @@ namespace Waldnet.Data
         }
 
 
+        public static List<NewsLink> ParseBusinessNews(string Input)
+        {
+            List<NewsLink> NewsLinks = new List<NewsLink>();
+
+            Input = FindStartOfNews(Input);
+
+            while (Input.Length > 0)
+            {
+                int StartIndexOFURL = Input.IndexOf("/wn/nieuws/");
+
+                if (StartIndexOFURL == -1)
+                {
+                    break;
+                }
+
+                int IndexOfEndOfName = Input.IndexOf("</a><br>");
+
+                if (IndexOfEndOfName == -1)
+                {
+                    break;
+                }
+
+                string HREF = Input.Substring(StartIndexOFURL, IndexOfEndOfName - StartIndexOFURL);
+                Input = Input.Substring(Input.IndexOf("</a><br>") + "</a><br>".Length);
+
+                string[] ContentArray = HREF.Split('>');
+
+                if (ContentArray[0].Contains('\"'))
+                {
+                    ContentArray[0] = ContentArray[0].Substring(0, ContentArray[0].Length - 1);
+                }
+
+                NewsLinks.Add(new NewsLink(ContentArray[0], ContentArray[1]));
+            }
+
+
+            return NewsLinks;
+        }
+
     }
 }

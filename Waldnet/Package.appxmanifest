@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="773e0313-c411-4928-ae41-098b90427045" Publisher="CN=Teake" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="773e0313-c411-4928-ae41-098b90427045" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="52891Speedydown.Wldnet" Publisher="CN=66C50CC1-FBB4-401C-87F4-C13E4975CFAE" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="6205fc61-d473-48e1-bbb9-a5483a6ebb6a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Waldnet</DisplayName>
-    <PublisherDisplayName>Teake</PublisherDisplayName>
+    <DisplayName>Wâldnet</DisplayName>
+    <PublisherDisplayName>Speedydown</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -16,10 +16,10 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Waldnet.App">
-      <m3:VisualElements DisplayName="Waldnet" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Waldnet" ForegroundText="light" BackgroundColor="transparent">
+      <m3:VisualElements DisplayName="Wâldnet" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Waldnet" ForegroundText="light" BackgroundColor="white">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
-        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+        <m3:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="white" />
         <m3:InitialRotationPreference>
           <m3:Rotation Preference="portrait" />
         </m3:InitialRotationPreference>
