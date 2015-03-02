@@ -10,7 +10,7 @@ namespace Waldnet.Data
 {
     internal static class NewsItemParser
     {
-        private static readonly string[] RemoveFilter = new string[] { "<br>", "<br />", "<br/>", "<BR>", "<p>", "<P>", "<em>", "</em>", "<strong>", "</strong>" };
+        private static readonly string[] RemoveFilter = new string[] { "<br>", "<br />", "<br/>", "<BR>", "<p>", "<P>", "<em>", "</em>", "<strong>", "</strong>", "<u>", "</u>" };
 
         public async static Task<NewsItem> ParseNews(string Input)
         {
