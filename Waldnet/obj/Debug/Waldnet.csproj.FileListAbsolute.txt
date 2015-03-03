@@ -16,11 +16,11 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.g.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\XamlTypeInfo.g.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\App.xaml
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ItemPage.xaml
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.xaml
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\App.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ItemPage.xbf
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\XamlSaveStateFile.xml
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.xaml
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Waldnet.exe
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Waldnet.pdb
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\priconfig.xml

@@ -1,4 +1,4 @@
-MainPackage=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Waldnet_1.1.0.0_Bundle\Waldnet_1.1.0.0_AnyCPU.appx
-SymbolPackage=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\AppPackages\Waldnet_1.1.0.0_Test\Waldnet_1.1.0.0_AnyCPU.appxsym
-ResourcePack=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Waldnet_1.1.0.0_Bundle\Waldnet_1.1.0.0_scale-100.appx
-ResourcePack=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Waldnet_1.1.0.0_Bundle\Waldnet_1.1.0.0_scale-140.appx
+MainPackage=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Waldnet_1.1.0.1_Bundle\Waldnet_1.1.0.1_AnyCPU.appx
+SymbolPackage=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\AppPackages\Waldnet_1.1.0.1_Test\Waldnet_1.1.0.1_AnyCPU.appxsym
+ResourcePack=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Waldnet_1.1.0.1_Bundle\Waldnet_1.1.0.1_scale-100.appx
+ResourcePack=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Waldnet_1.1.0.1_Bundle\Waldnet_1.1.0.1_scale-140.appx

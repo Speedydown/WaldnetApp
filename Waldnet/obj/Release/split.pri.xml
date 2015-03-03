@@ -31,9 +31,19 @@
 						<Value>Assets\BadgeLogo.scale-240.png</Value>
 					</Candidate>
 				</NamedResource>
+				<NamedResource name="business.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/business.png">
+					<Candidate type="Path">
+						<Value>Assets\business.png</Value>
+					</Candidate>
+				</NamedResource>
 				<NamedResource name="Logo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/Logo.png">
 					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
 						<Value>Assets\Logo.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="NewsLogo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/NewsLogo.png">
+					<Candidate type="Path">
+						<Value>Assets\NewsLogo.png</Value>
 					</Candidate>
 				</NamedResource>
 				<NamedResource name="SmallLogo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/SmallLogo.png">
@@ -44,6 +54,11 @@
 				<NamedResource name="SplashScreen.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/SplashScreen.png">
 					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
 						<Value>Assets\SplashScreen.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Sport.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/Sport.png">
+					<Candidate type="Path">
+						<Value>Assets\Sport.png</Value>
 					</Candidate>
 				</NamedResource>
 				<NamedResource name="Square71x71Logo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/Square71x71Logo.png">

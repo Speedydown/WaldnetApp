@@ -53,6 +53,22 @@ namespace Waldnet.Data
             return NewsLinks;
         }
 
+        public async Task<List<NewsLink>> GetSportssNews()
+        {
+            List<NewsLink> NewsLinks = new List<NewsLink>();
+
+            try
+            {
+                NewsLinks = PageParser.ParseBusinessNews(await this.GetDataFromURL("http://waldnet.nl/sportnieuws.php"));
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return NewsLinks;
+        }
+
         public async Task<List<SearchResult>> GetSearchResult(string Query)
         {
             List<SearchResult> NewsLinks = new List<SearchResult>();

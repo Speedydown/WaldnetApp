@@ -14,8 +14,9 @@
     <RootPropertyPathName Name="Plaats" />
     <RootPropertyPathName Name="Date" />
     <RootPropertyPathName Name="NewsType" />
-    <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="NewsLinks" />
+    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="Image" />
     <RootPropertyPathName Name="DayName" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -52,6 +53,8 @@
       <RootMethod Name="SetColumn" />
       <RootMethod Name="GetColumnSpan" />
       <RootMethod Name="SetColumnSpan" />
+      <RootMethod Name="GetRowSpan" />
+      <RootMethod Name="SetRowSpan" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.EntranceThemeTransition" />
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
@@ -72,6 +75,9 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Source" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
       <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
@@ -168,6 +174,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="Label" />
       <RootProperty Name="Icon" />
+      <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Waldnet.PivotPage" />

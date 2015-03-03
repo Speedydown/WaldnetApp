@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using Waldnet.Data.DataModel;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.System;
+using Windows.Phone.UI.Input;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -29,8 +30,11 @@ namespace Waldnet
     /// </summary>
     public sealed partial class ItemPage : Page
     {
+        RelayCommand _checkedGoBackCommand;
         private readonly NavigationHelper navigationHelper;
         private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        private bool FullsizeImage = false;
 
         public ItemPage()
         {
@@ -39,7 +43,35 @@ namespace Waldnet
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-        } 
+
+            _checkedGoBackCommand = new RelayCommand(
+                                    () => this.CheckGoBack(),
+                                    () => this.CanCheckGoBack()
+                                );
+
+            navigationHelper.GoBackCommand = _checkedGoBackCommand;
+        }
+
+        private bool CanCheckGoBack()
+        {
+            return true;
+        }
+
+        private void CheckGoBack()
+        {
+            if (this.FullsizeImage)
+            {
+                this.FullsizeImage = false;
+                Content.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                FullImage.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+            else
+            {
+                NavigationHelper.GoBack();
+            }
+        }
+
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
@@ -120,6 +152,7 @@ namespace Waldnet
 
         private void ImagesListview_ItemClick(object sender, ItemClickEventArgs e)
         {
+            this.FullsizeImage = true;
             Content.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             FullImage.Source = new BitmapImage(new Uri(e.ClickedItem as string));
             FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Visible;
@@ -128,6 +161,7 @@ namespace Waldnet
 
         private void FullImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            this.FullsizeImage = false;
             Content.Visibility = Windows.UI.Xaml.Visibility.Visible;
             FullImage.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Collapsed;

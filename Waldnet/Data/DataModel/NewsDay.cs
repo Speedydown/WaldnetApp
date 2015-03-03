@@ -16,5 +16,13 @@ namespace Waldnet.Data.DataModel
             this.DayName = DayName;
             this.NewsLinks = NewsLinks;
         }
+
+        public void SetAllNewsLinksImage(string Image)
+        {
+            foreach (NewsLink n in this.NewsLinks)
+            {
+                n.SetImage(Image);
+            }
+        }
     }
 }

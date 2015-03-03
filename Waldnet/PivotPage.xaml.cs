@@ -20,6 +20,10 @@ using Windows.UI.Xaml.Navigation;
 using Waldnet.Data.DataModel;
 using Windows.UI;
 using Windows.System;
+using Windows.ApplicationModel.Background;
+using Windows.Data.Xml.Dom;
+using Windows.UI.Notifications;
+using System.Threading.Tasks;
 
 namespace Waldnet
 {
@@ -37,6 +41,27 @@ namespace Waldnet
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
+            //const string name = "TileTask";
+
+            //if (BackgroundTaskRegistration.AllTasks.Any(task => task.Value.Name == name))
+            //{
+            //    // One register it once
+            //    return;
+            //}
+
+            //var builder = new BackgroundTaskBuilder();
+            //var trigger = new SystemTrigger(SystemTriggerType., false);
+
+            //builder.Name = name;
+            //builder.TaskEntryPoint = typeof(Tasks.LiveTileTask).FullName;
+            //builder.SetTrigger(trigger);
+
+            //var registration = builder.Register();
+            //registration.Completed += RegistrationOnCompleted;
+
+
+
         }
 
         public NavigationHelper NavigationHelper
@@ -51,9 +76,74 @@ namespace Waldnet
 
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            this.RegionalNews.ItemsSource = await DataHandler.Instance.GetRegionalNews();
-            this.OndernemendNieuwsList.ItemsSource = await DataHandler.Instance.GetBusinessNews();
+
+            List<NewsDay> News = await DataHandler.Instance.GetRegionalNews();
+            List<NewsLink> Businessnews = await DataHandler.Instance.GetBusinessNews();
+            List<NewsLink> SportsNews = await DataHandler.Instance.GetSportssNews();
+
+            foreach (NewsLink n in SportsNews)
+            {
+                n.SetImage("Assets/Sport.png");
+            }
+
+            foreach (NewsLink n in Businessnews)
+            {
+                n.SetImage("Assets/business.png");
+            }
+
+            this.RegionalNews.ItemsSource = News;
+            this.OndernemendNieuwsList.ItemsSource = new NewsDay[] { new NewsDay("Sport nieuws", SportsNews.GetRange(0, 8)), new NewsDay("Ondernemend nieuws", Businessnews.GetRange(0, 8)) };
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
+         //   Task Tile = Task.Run(() => CreateTile(News));
+        }
+
+        private async Task CreateTile(List<NewsDay> News)
+        {
+
+            XmlDocument tileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWide310x150BlockAndText01);
+            XmlNodeList tileTextAttributes = tileXml.GetElementsByTagName("text");
+
+            try
+            {
+                tileTextAttributes[4].InnerText = News[0].NewsLinks[0].Name;
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                tileTextAttributes[3].InnerText = News[0].NewsLinks[1].Name;
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                tileTextAttributes[2].InnerText = News[0].NewsLinks[2].Name;
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                tileTextAttributes[0].InnerText = News[0].NewsLinks.Count.ToString();
+                tileTextAttributes[1].InnerText = "Vandaag op wâldnet";
+            }
+            catch
+            {
+
+            }
+
+            TileNotification tileNotification = new TileNotification(tileXml);
+
+            TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
         }
 
         /// <summary>
@@ -76,7 +166,7 @@ namespace Waldnet
         {
             if (!Frame.Navigate(typeof(ItemPage), (e.ClickedItem as NewsLink).URL))
             {
-               
+
             }
         }
 
@@ -130,12 +220,19 @@ namespace Waldnet
             if ((pivot.SelectedItem as PivotItem).Name == "SearchPivot")
             {
                 SearchTextbox.Background = new SolidColorBrush(Colors.White);
+                WaldNetSearchButton.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                WaldnetButton.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+            else
+            {
+                WaldNetSearchButton.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                WaldnetButton.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
         }
 
-        private void PrivacyPolicyButton_Click(object sender, RoutedEventArgs e)
+        private async void PrivacyPolicyButton_Click(object sender, RoutedEventArgs e)
         {
-            Launcher.LaunchUriAsync(new Uri("http://waldnet.nl/wn/p/1/Copyright.html"));
+            await Launcher.LaunchUriAsync(new Uri("http://waldnet.nl/wn/p/1/Copyright.html"));
         }
 
         private void SearchResultList_ItemClick(object sender, ItemClickEventArgs e)
@@ -146,15 +243,11 @@ namespace Waldnet
             }
         }
 
-        private async void SearchTextbox_KeyDown(object sender, KeyRoutedEventArgs e)
+        private void SearchTextbox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Enter)
             {
-                DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-                SearchResultList.ItemsSource = await DataHandler.Instance.GetSearchResult(SearchTextbox.Text);
-
-                DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                this.Search();
 
                 var control = sender as Control;
                 var isTabStop = control.IsTabStop;
@@ -165,9 +258,21 @@ namespace Waldnet
             }
         }
 
-        private void WaldnetButton_Click(object sender, RoutedEventArgs e)
+        private async void WaldnetButton_Click(object sender, RoutedEventArgs e)
         {
-            Launcher.LaunchUriAsync(new Uri("http://waldnet.nl/"));
+            await Launcher.LaunchUriAsync(new Uri("http://waldnet.nl/"));
+        }
+
+        private void WaldNetSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Search();
+        }
+
+        private async void Search()
+        {
+            DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            SearchResultList.ItemsSource = await DataHandler.Instance.GetSearchResult(SearchTextbox.Text);
+            DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
     }
 }
