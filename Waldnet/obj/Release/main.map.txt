@@ -9,6 +9,7 @@
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Waldnet.exe"			"Waldnet.exe"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\PivotPage.xbf"			"PivotPage.xbf"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\ItemPage.xbf"			"ItemPage.xbf"
+"C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\BackgroundTask.winmd"			"BackgroundTask.winmd"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\App.xbf"			"App.xbf"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Common\ReadMe.txt"			"Common\ReadMe.txt"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Assets\WideLogo.scale-240.png"			"Assets\WideLogo.scale-240.png"

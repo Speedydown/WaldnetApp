@@ -19,6 +19,9 @@
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Waldnet.exe">
       <PackagePath>Waldnet.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\BackgroundTask.winmd">
+      <PackagePath>BackgroundTask.winmd</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\Assets\BadgeLogo.scale-240.png">
       <PackagePath>Assets\BadgeLogo.scale-240.png</PackagePath>
     </AppxPackagedFile>

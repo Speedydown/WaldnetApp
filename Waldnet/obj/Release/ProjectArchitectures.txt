@@ -1,1 +1,2 @@
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\BackgroundTask.csproj;neutral
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\Waldnet.csproj;neutral

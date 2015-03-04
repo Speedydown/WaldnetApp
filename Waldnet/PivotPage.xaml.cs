@@ -24,11 +24,14 @@ using Windows.ApplicationModel.Background;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace Waldnet
 {
     public sealed partial class PivotPage : Page
     {
+        private static DateTime? LastLoadedDT = null;
+
         private readonly NavigationHelper navigationHelper;
         private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -76,74 +79,43 @@ namespace Waldnet
 
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            TileUpdateManager.CreateTileUpdaterForApplication().Clear();
 
-            List<NewsDay> News = await DataHandler.Instance.GetRegionalNews();
-            List<NewsLink> Businessnews = await DataHandler.Instance.GetBusinessNews();
-            List<NewsLink> SportsNews = await DataHandler.Instance.GetSportssNews();
-
-            foreach (NewsLink n in SportsNews)
+            if (LastLoadedDT == null || DateTime.Now.Subtract((DateTime)LastLoadedDT).Minutes > 5)
             {
-                n.SetImage("Assets/Sport.png");
+                List<NewsDay> News = await DataHandler.Instance.GetRegionalNews();
+                List<NewsLink> Businessnews = await DataHandler.Instance.GetBusinessNews();
+                List<NewsLink> SportsNews = await DataHandler.Instance.GetSportssNews();
+
+                foreach (NewsLink n in SportsNews)
+                {
+                    n.SetImage("Assets/Sport.png");
+                }
+
+                foreach (NewsLink n in Businessnews)
+                {
+                    n.SetImage("Assets/business.png");
+                }
+
+                this.RegionalNews.ItemsSource = News;
+                this.OndernemendNieuwsList.ItemsSource = new NewsDay[] { new NewsDay("Sportnieuws", SportsNews.GetRange(0, 8)), new NewsDay("Ondernemend nieuws", Businessnews.GetRange(0, 8)) };
+
+                if (LastLoadedDT == null)
+                {
+                    NotificationHandler.Run();
+                }
+
+                ApplicationData applicationData = ApplicationData.Current;
+                ApplicationDataContainer localSettings = applicationData.LocalSettings;
+
+                localSettings.Values["LastNewsItem"] = News.First().NewsLinks.First().URL;
+
+                LastLoadedDT = DateTime.Now;
             }
 
-            foreach (NewsLink n in Businessnews)
-            {
-                n.SetImage("Assets/business.png");
-            }
-
-            this.RegionalNews.ItemsSource = News;
-            this.OndernemendNieuwsList.ItemsSource = new NewsDay[] { new NewsDay("Sport nieuws", SportsNews.GetRange(0, 8)), new NewsDay("Ondernemend nieuws", Businessnews.GetRange(0, 8)) };
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
          //   Task Tile = Task.Run(() => CreateTile(News));
-        }
-
-        private async Task CreateTile(List<NewsDay> News)
-        {
-
-            XmlDocument tileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWide310x150BlockAndText01);
-            XmlNodeList tileTextAttributes = tileXml.GetElementsByTagName("text");
-
-            try
-            {
-                tileTextAttributes[4].InnerText = News[0].NewsLinks[0].Name;
-            }
-            catch
-            {
-
-            }
-
-            try
-            {
-                tileTextAttributes[3].InnerText = News[0].NewsLinks[1].Name;
-            }
-            catch
-            {
-
-            }
-
-            try
-            {
-                tileTextAttributes[2].InnerText = News[0].NewsLinks[2].Name;
-            }
-            catch
-            {
-
-            }
-
-            try
-            {
-                tileTextAttributes[0].InnerText = News[0].NewsLinks.Count.ToString();
-                tileTextAttributes[1].InnerText = "Vandaag op wâldnet";
-            }
-            catch
-            {
-
-            }
-
-            TileNotification tileNotification = new TileNotification(tileXml);
-
-            TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
         }
 
         /// <summary>
@@ -261,6 +233,7 @@ namespace Waldnet
         private async void WaldnetButton_Click(object sender, RoutedEventArgs e)
         {
             await Launcher.LaunchUriAsync(new Uri("http://waldnet.nl/"));
+
         }
 
         private void WaldNetSearchButton_Click(object sender, RoutedEventArgs e)

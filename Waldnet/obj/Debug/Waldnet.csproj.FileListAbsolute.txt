@@ -35,3 +35,7 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\qualifiers.txt
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ProjectArchitectures.txt
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\BackgroundTask.winmd
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\BackgroundTask.pdb
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\BackgroundTask.pri
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Waldnet.csprojResolveAssemblyReference.cache

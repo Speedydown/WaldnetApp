@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using Waldnet.Data;
+using Windows.UI.Notifications;
 
 namespace Waldnet
 {
@@ -30,7 +32,6 @@ namespace Waldnet
         public App()
         {
             this.InitializeComponent();
-            
             this.Suspending += this.OnSuspending;
         }
 
@@ -42,7 +43,7 @@ namespace Waldnet
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            TileUpdateManager.CreateTileUpdaterForApplication().Clear();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -133,6 +134,11 @@ namespace Waldnet
             var deferral = e.SuspendingOperation.GetDeferral();
             await SuspensionManager.SaveAsync();
             deferral.Complete();
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
         }
     }
 }
