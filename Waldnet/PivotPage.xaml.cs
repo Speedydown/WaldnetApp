@@ -1,5 +1,4 @@
 ﻿using Waldnet.Common;
-using Waldnet.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +16,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Waldnet.Data.DataModel;
 using Windows.UI;
 using Windows.System;
 using Windows.ApplicationModel.Background;
@@ -25,6 +23,7 @@ using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 using System.Threading.Tasks;
 using Windows.Storage;
+using BackgroundTask;
 
 namespace Waldnet
 {
@@ -83,9 +82,9 @@ namespace Waldnet
 
             if (LastLoadedDT == null || DateTime.Now.Subtract((DateTime)LastLoadedDT).Minutes > 5)
             {
-                List<NewsDay> News = await DataHandler.Instance.GetRegionalNews();
-                List<NewsLink> Businessnews = await DataHandler.Instance.GetBusinessNews();
-                List<NewsLink> SportsNews = await DataHandler.Instance.GetSportssNews();
+                List<NewsDay> News = (List<NewsDay>)await DataHandler.GetRegionalNews();
+                List<NewsLink> Businessnews = (List<NewsLink>)await DataHandler.GetBusinessNews();
+                List<NewsLink> SportsNews = (List<NewsLink>)await DataHandler.GetSportssNews();
 
                 foreach (NewsLink n in SportsNews)
                 {
@@ -244,7 +243,7 @@ namespace Waldnet
         private async void Search()
         {
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            SearchResultList.ItemsSource = await DataHandler.Instance.GetSearchResult(SearchTextbox.Text);
+            SearchResultList.ItemsSource = await DataHandler.GetSearchResult(SearchTextbox.Text);
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
     }

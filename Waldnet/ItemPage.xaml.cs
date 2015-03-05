@@ -1,5 +1,4 @@
 ﻿using Waldnet.Common;
-using Waldnet.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,10 +15,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Waldnet.Data.DataModel;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.System;
 using Windows.Phone.UI.Input;
+using BackgroundTask;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -62,7 +61,7 @@ namespace Waldnet
             if (this.FullsizeImage)
             {
                 this.FullsizeImage = false;
-                Content.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                NewsContent.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 FullImage.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
@@ -105,7 +104,7 @@ namespace Waldnet
         {
             string URL = (string)e.NavigationParameter;
 
-            NewsItem NI = await DataHandler.Instance.GetNewsItemFromURL(URL);
+            NewsItem NI = await DataHandler.GetNewsItemFromURL(URL);
 
             LayoutRoot.DataContext = NI;
         }
@@ -153,7 +152,7 @@ namespace Waldnet
         private void ImagesListview_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.FullsizeImage = true;
-            Content.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            NewsContent.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             FullImage.Source = new BitmapImage(new Uri(e.ClickedItem as string));
             FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Visible;
             FullImage.Visibility = Windows.UI.Xaml.Visibility.Visible;
@@ -162,7 +161,7 @@ namespace Waldnet
         private void FullImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.FullsizeImage = false;
-            Content.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            NewsContent.Visibility = Windows.UI.Xaml.Visibility.Visible;
             FullImage.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             FullImageScrollViewer.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }

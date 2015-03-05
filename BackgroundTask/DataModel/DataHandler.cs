@@ -10,26 +10,22 @@ using Windows.Foundation;
 
 namespace BackgroundTask
 {
-    public sealed class DataHandler
+    public static class DataHandler
     {
-        private Semaphore DataSemaphore = new Semaphore(1, 1);
+        private static Semaphore DataSemaphore = new Semaphore(1, 1);
 
-        public DataHandler()
-        {
-        }
-
-        public IAsyncOperation<IList<NewsDay>> GetRegionalNews()
+        public static IAsyncOperation<IList<NewsDay>> GetRegionalNews()
         {
             return GetRegionalNewsHelper().AsAsyncOperation();
         }
 
-        private async Task<IList<NewsDay>> GetRegionalNewsHelper()
+        private static async Task<IList<NewsDay>> GetRegionalNewsHelper()
         {
-            List<NewsDay> NewsDays = new List<NewsDay>();
+            IList<NewsDay> NewsDays = new List<NewsDay>();
 
             try
             {
-                NewsDays = PageParser.ParseRegionalNews(await this.GetDataFromURL(""));
+                NewsDays = PageParser.ParseRegionalNews(await GetDataFromURL(""));
             }
             catch (Exception)
             {
@@ -40,18 +36,18 @@ namespace BackgroundTask
 
         }
 
-        public IAsyncOperation<IList<NewsLink>> GetBusinessNews()
+        public static IAsyncOperation<IList<NewsLink>> GetBusinessNews()
         {
             return GetBusinessNewsHelper().AsAsyncOperation();
         }
 
-        private async Task<IList<NewsLink>> GetBusinessNewsHelper()
+        private static async Task<IList<NewsLink>> GetBusinessNewsHelper()
         {
             List<NewsLink> NewsLinks = new List<NewsLink>();
 
             try
             {
-                NewsLinks = PageParser.ParseBusinessNews(await this.GetDataFromURL("http://waldnet.nl/ondernemendnieuws.php"));
+                NewsLinks = PageParser.ParseBusinessNews(await GetDataFromURL("http://waldnet.nl/ondernemendnieuws.php"));
             }
             catch (Exception)
             {
@@ -61,19 +57,18 @@ namespace BackgroundTask
             return NewsLinks;
         }
 
-        public IAsyncOperation<IList<NewsLink>> GetSportssNews()
+        public static IAsyncOperation<IList<NewsLink>> GetSportssNews()
         {
             return GetSportssNewsHelper().AsAsyncOperation();
         }
 
-
-        private async Task<IList<NewsLink>> GetSportssNewsHelper()
+        private static async Task<IList<NewsLink>> GetSportssNewsHelper()
         {
             List<NewsLink> NewsLinks = new List<NewsLink>();
 
             try
             {
-                NewsLinks = PageParser.ParseBusinessNews(await this.GetDataFromURL("http://waldnet.nl/sportnieuws.php"));
+                NewsLinks = PageParser.ParseBusinessNews(await GetDataFromURL("http://waldnet.nl/sportnieuws.php"));
             }
             catch (Exception)
             {
@@ -83,21 +78,52 @@ namespace BackgroundTask
             return NewsLinks;
         }
 
-        public IAsyncOperation<string> GetDataFromURL(string URL)
+        public static IAsyncOperation<IList<SearchResult>> GetSearchResult(string Query)
+        {
+            return GetSearchResultHelper(Query).AsAsyncOperation();
+        }
+
+        private static async Task<IList<SearchResult>> GetSearchResultHelper(string Query)
+        {
+            IList<SearchResult> NewsLinks = new List<SearchResult>();
+
+            try
+            {
+                NewsLinks = SearchResultParser.GetNewsLinksFromSearchResult(await Search(Query));
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return NewsLinks;
+        }
+
+        public static IAsyncOperation<NewsItem> GetNewsItemFromURL(string URL)
+        {
+            return GetNewsItemFromURLHelper(URL).AsAsyncOperation();
+        }
+
+        private static async Task<NewsItem> GetNewsItemFromURLHelper(string URL)
+        {
+            return await NewsItemParser.ParseNews(await GetDataFromURL(URL));
+        }
+
+        public static IAsyncOperation<string> GetDataFromURL(string URL)
+        {
+            return GetDataFromURLHelper(URL).AsAsyncOperation();
+        }
+
+        private static async Task<string> GetDataFromURLHelper(string URL)
         {
             if (URL == string.Empty)
             {
                 URL = "http://waldnet.nl/regionaal.php";
             }
 
-            return GetDataFromURLHelper(URL).AsAsyncOperation();
-        }
-
-        private async Task<string> GetDataFromURLHelper(string URL = "http://waldnet.nl/regionaal.php")
-        {
             string Output = string.Empty;
 
-            if (this.DataSemaphore.WaitOne(10000))
+            if (DataSemaphore.WaitOne(10000))
             {
 
                 try
@@ -132,7 +158,7 @@ namespace BackgroundTask
 
             try
             {
-                this.DataSemaphore.Release();
+                DataSemaphore.Release();
             }
             catch
             {
@@ -143,11 +169,16 @@ namespace BackgroundTask
 
         }
 
-        private async Task<string> Search(string SearchTerm)
+        public static IAsyncOperation<string> Search(string SearchTerm)
+        {
+            return SearchHelper(SearchTerm).AsAsyncOperation();
+        }
+
+        private static async Task<string> SearchHelper(string SearchTerm)
         {
             string Output = string.Empty;
 
-            if (this.DataSemaphore.WaitOne(10000))
+            if (DataSemaphore.WaitOne(10000))
             {
                 try
                 {
@@ -185,7 +216,7 @@ namespace BackgroundTask
 
             try
             {
-                this.DataSemaphore.Release();
+                DataSemaphore.Release();
             }
             catch
             {

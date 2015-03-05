@@ -4,9 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using Waldnet.Data.DataModel;
 
-namespace Waldnet.Data
+namespace BackgroundTask
 {
     internal static class NewsItemParser
     {
@@ -254,7 +253,7 @@ namespace Waldnet.Data
         {
             List<string> ImagesList = new List<string>();
 
-            string Input = await DataHandler.Instance.GetDataFromURL(URL);
+            string Input = await DataHandler.GetDataFromURL(URL);
 
             int StartIndex = Input.IndexOf("<div class=paginanb>");
 
@@ -325,7 +324,7 @@ namespace Waldnet.Data
         {
             List<Reaction> ReactionList = new List<Reaction>();
 
-            string Input = await DataHandler.Instance.GetDataFromURL(URL);
+            string Input = await DataHandler.GetDataFromURL(URL);
 
             int StartIndex = Input.IndexOf("<b>REACTIES</b>");
 

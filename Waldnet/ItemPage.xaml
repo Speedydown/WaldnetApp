@@ -42,7 +42,7 @@
             </Grid>
             <TextBlock x:Uid="Header" Text="{Binding Header}" Margin="5,4,0,0" Foreground="Black" FontSize="18" FontWeight="Bold" TextWrapping="WrapWholeWords" />
         </StackPanel>
-        <ScrollViewer x:Name="Content" Grid.Row="1" VerticalScrollMode="Auto">
+        <ScrollViewer x:Name="NewsContent" Grid.Row="1" VerticalScrollMode="Auto">
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

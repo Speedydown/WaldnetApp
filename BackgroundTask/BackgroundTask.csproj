@@ -83,13 +83,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundTask.cs" />
-    <Compile Include="DataHandler.cs" />
-    <Compile Include="DataModel\NewsDay.cs" />
-    <Compile Include="DataModel\NewsItem.cs" />
-    <Compile Include="DataModel\NewsLink.cs" />
-    <Compile Include="DataModel\Reaction.cs" />
-    <Compile Include="DataModel\SearchResult.cs" />
-    <Compile Include="PageParser.cs" />
+    <Compile Include="DataModel\DataHandler.cs" />
+    <Compile Include="DataModel\Objects\NewsDay.cs" />
+    <Compile Include="DataModel\Objects\NewsItem.cs" />
+    <Compile Include="DataModel\NewsItemParser.cs" />
+    <Compile Include="DataModel\Objects\NewsLink.cs" />
+    <Compile Include="DataModel\NotificationHandler.cs" />
+    <Compile Include="DataModel\PageParser.cs" />
+    <Compile Include="DataModel\Objects\Reaction.cs" />
+    <Compile Include="DataModel\Objects\SearchResult.cs" />
+    <Compile Include="DataModel\SearchResultParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

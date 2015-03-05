@@ -4,13 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using Waldnet.Data.DataModel;
 
-namespace Waldnet.Data
+namespace BackgroundTask
 {
     public static class SearchResultParser
     {
-        public static List<SearchResult> GetNewsLinksFromSearchResult(string Input)
+        public static IList<SearchResult> GetNewsLinksFromSearchResult(string Input)
         {
             List<SearchResult> NewsLinkList = new List<SearchResult>();
             int IndexOfResults = Input.IndexOf("<div class=content><table cellspacing=1 cellpadding=1 border=0>");

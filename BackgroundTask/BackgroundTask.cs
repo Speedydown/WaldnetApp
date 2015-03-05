@@ -23,7 +23,7 @@ namespace BackgroundTask
         {
             ApplicationData applicationData = ApplicationData.Current;
             ApplicationDataContainer localSettings = applicationData.LocalSettings;
-            IList<NewsDay> News = await new DataHandler().GetRegionalNews();
+            IList<NewsDay> News = await DataHandler.GetRegionalNews();
             IList<NewsLink> NewsLink = new List<NewsLink>();
 
             string LastURL = string.Empty;
