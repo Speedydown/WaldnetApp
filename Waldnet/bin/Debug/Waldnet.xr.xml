@@ -27,6 +27,7 @@
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />
     </RootType>
+    <RootType FullName="System.String" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Transitions" />
@@ -144,12 +145,13 @@
       <RootMethod Name="GetIsStaggerElement" />
       <RootMethod Name="SetIsStaggerElement" />
     </RootType>
-    <RootType FullName="Waldnet.ItemPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="Foreground" />
       <RootProperty Name="IsIndeterminate" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
     </RootType>
+    <RootType FullName="Waldnet.ItemPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.PivotItem">
       <RootProperty Name="Margin" />
       <RootProperty Name="Header" />

@@ -19,7 +19,15 @@
     </Page.Transitions>
 
     <Grid Background="White">
-        <ProgressBar x:Name="DataProgressBar" Foreground="#FF07519A" IsIndeterminate="True" VerticalAlignment="Top"/>
+        <ProgressBar x:Name="DataProgressBar" IsIndeterminate="True" VerticalAlignment="Top"/>
+        <Grid x:Name="NoInternetGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Wâldnet is op dit moment helaas niet beschikbaar :(" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="35" TextAlignment="Center" />
+            <TextBlock Grid.Row="1" Text="Opnieuw proberen? Klik dan op vernieuwen" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="15" TextAlignment="Center" Margin="0, 25" />
+        </Grid>
         <Pivot x:ConnectionId='1' x:Uid="Pivot" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A"                                          >
             <PivotItem
                 Margin="0,5,0,0"               
@@ -288,18 +296,15 @@
                 </Grid>
             </PivotItem>
         </Pivot>
-        
-        <Grid x:Name="NoInternetGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
-            <TextBlock Text="Wâldnet is op dit moment helaas niet beschikbaar :(" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="35" TextAlignment="Center" />
-        </Grid>
     </Grid>
 
     <Page.BottomAppBar>
         <CommandBar Background="#FFDCE7F3" Foreground="#FF07519A">
             <AppBarButton x:ConnectionId='6' x:Uid="WaldnetButton" x:Name="WaldnetButton" Label="Wâldnet" Icon="World"                             />
             <AppBarButton x:ConnectionId='7' x:Uid="WaldNetSearchButton" x:Name="WaldNetSearchButton" Label="Zoeken" Icon="Find" Visibility="Collapsed"                                  />
+            <AppBarButton x:ConnectionId='8' x:Uid="RefreshButton" x:Name="RefreshButton" Label="Vernieuwen" Icon="Refresh"                             />
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='8' x:Uid="PrivacyPolicyButton" x:Name="PrivacyPolicyButton" Label="Privacy policy"                                   />
+                <AppBarButton x:ConnectionId='9' x:Uid="PrivacyPolicyButton" x:Name="PrivacyPolicyButton" Label="Privacy policy"                                   />
             </CommandBar.SecondaryCommands>
         </CommandBar>
 

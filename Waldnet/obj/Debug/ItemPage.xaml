@@ -29,7 +29,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <StackPanel Grid.Row="0" Margin="0,0,0,0">
             <Grid Background="#FF0061B0">
                 <Grid.ColumnDefinitions>
@@ -40,6 +39,7 @@
                 <TextBlock x:Uid="NewsContext" Grid.Column="0" Text="{Binding DataName}" Margin="5,2,0,2" Foreground="White" FontSize="13" TextWrapping="WrapWholeWords" />
                 <TextBlock x:Uid="Datum" Grid.Column="1" Text="{Binding Datum}" Margin="10,2,0,2" Foreground="White" FontSize="13" TextWrapping="WrapWholeWords" />
             </Grid>
+            <ProgressBar x:Name="DataProgressBar" Foreground="#FF07519A" IsIndeterminate="True" VerticalAlignment="Top" Margin="0,5, 0, 0"/>
             <TextBlock x:Uid="Header" Text="{Binding Header}" Margin="5,4,0,0" Foreground="Black" FontSize="18" FontWeight="Bold" TextWrapping="WrapWholeWords" />
         </StackPanel>
         <ScrollViewer x:Name="NewsContent" Grid.Row="1" VerticalScrollMode="Auto">

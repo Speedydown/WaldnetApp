@@ -30,12 +30,14 @@ namespace Waldnet
     public sealed partial class PivotPage : Page
     {
         private static DateTime? LastLoadedDT = null;
+        public static PivotPage Instance { get; private set; }
 
         private readonly NavigationHelper navigationHelper;
         private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         public PivotPage()
         {
+            Instance = this;
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
@@ -62,7 +64,7 @@ namespace Waldnet
             await HandleWaldnetData();
         }
 
-        private async Task HandleWaldnetData()
+        public async Task HandleWaldnetData()
         {
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
 

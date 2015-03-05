@@ -45,6 +45,11 @@ namespace Waldnet
             TileUpdateManager.CreateTileUpdaterForApplication().Clear();
             Frame rootFrame = Window.Current.Content as Frame;
 
+            if (PivotPage.Instance != null)
+            {
+                PivotPage.Instance.HandleWaldnetData();
+            }
+
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active.
             if (rootFrame == null)
@@ -130,6 +135,8 @@ namespace Waldnet
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
+
+
             base.OnActivated(args);
         }
     }
