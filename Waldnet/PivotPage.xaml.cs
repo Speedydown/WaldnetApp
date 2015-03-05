@@ -43,28 +43,9 @@ namespace Waldnet
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-
-            //const string name = "TileTask";
-
-            //if (BackgroundTaskRegistration.AllTasks.Any(task => task.Value.Name == name))
-            //{
-            //    // One register it once
-            //    return;
-            //}
-
-            //var builder = new BackgroundTaskBuilder();
-            //var trigger = new SystemTrigger(SystemTriggerType., false);
-
-            //builder.Name = name;
-            //builder.TaskEntryPoint = typeof(Tasks.LiveTileTask).FullName;
-            //builder.SetTrigger(trigger);
-
-            //var registration = builder.Register();
-            //registration.Completed += RegistrationOnCompleted;
-
-
-
         }
+
+        
 
         public NavigationHelper NavigationHelper
         {
@@ -78,53 +59,65 @@ namespace Waldnet
 
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            await HandleWaldnetData();
+        }
+
+        private async Task HandleWaldnetData()
+        {
+            DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
             TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            this.NoInternetGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
             if (LastLoadedDT == null || DateTime.Now.Subtract((DateTime)LastLoadedDT).Minutes > 5)
             {
-                List<NewsDay> News = (List<NewsDay>)await DataHandler.GetRegionalNews();
-                List<NewsLink> Businessnews = (List<NewsLink>)await DataHandler.GetBusinessNews();
-                List<NewsLink> SportsNews = (List<NewsLink>)await DataHandler.GetSportssNews();
-
-                foreach (NewsLink n in SportsNews)
+                try
                 {
-                    n.SetImage("Assets/Sport.png");
-                }
+                    List<NewsDay> News = (List<NewsDay>)await DataHandler.GetRegionalNews();
+                    List<NewsLink> Businessnews = (List<NewsLink>)await DataHandler.GetBusinessNews();
+                    List<NewsLink> SportsNews = (List<NewsLink>)await DataHandler.GetSportssNews();
 
-                foreach (NewsLink n in Businessnews)
+                    foreach (NewsLink n in SportsNews)
+                    {
+                        n.SetImage("Assets/Sport.png");
+                    }
+
+                    foreach (NewsLink n in Businessnews)
+                    {
+                        n.SetImage("Assets/business.png");
+                    }
+
+                    this.RegionalNews.ItemsSource = News;
+                    this.OndernemendNieuwsList.ItemsSource = new NewsDay[] { new NewsDay("Sportnieuws", SportsNews.GetRange(0, 8)), new NewsDay("Ondernemend nieuws", Businessnews.GetRange(0, 8)) };
+
+                    if (LastLoadedDT == null)
+                    {
+                        NotificationHandler.Run();
+                    }
+
+                    ApplicationData applicationData = ApplicationData.Current;
+                    ApplicationDataContainer localSettings = applicationData.LocalSettings;
+
+                    try
+                    {
+                        localSettings.Values["LastNewsItem"] = News.First().NewsLinks.First().URL;
+                    }
+                    catch
+                    {
+
+                    }
+
+                    LastLoadedDT = DateTime.Now;
+                }
+                catch (Exception)
                 {
-                    n.SetImage("Assets/business.png");
+                    this.NoInternetGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
-
-                this.RegionalNews.ItemsSource = News;
-                this.OndernemendNieuwsList.ItemsSource = new NewsDay[] { new NewsDay("Sportnieuws", SportsNews.GetRange(0, 8)), new NewsDay("Ondernemend nieuws", Businessnews.GetRange(0, 8)) };
-
-                if (LastLoadedDT == null)
-                {
-                    NotificationHandler.Run();
-                }
-
-                ApplicationData applicationData = ApplicationData.Current;
-                ApplicationDataContainer localSettings = applicationData.LocalSettings;
-
-                localSettings.Values["LastNewsItem"] = News.First().NewsLinks.First().URL;
-
-                LastLoadedDT = DateTime.Now;
             }
 
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
-         //   Task Tile = Task.Run(() => CreateTile(News));
         }
 
-        /// <summary>
-        /// Preserves state associated with this page in case the application is suspended or the
-        /// page is discarded from the navigation cache. Values must conform to the serialization
-        /// requirements of <see cref="SuspensionManager.SessionState"/>.
-        /// </summary>
-        /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/>.</param>
-        /// <param name="e">Event data that provides an empty dictionary to be populated with
-        /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
             // TODO: Save the unique state of the page here.
@@ -245,6 +238,17 @@ namespace Waldnet
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
             SearchResultList.ItemsSource = await DataHandler.GetSearchResult(SearchTextbox.Text);
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        }
+
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.RefreshButton.IsEnabled = false;
+            this.RegionalNews.ItemsSource = null;
+            this.OndernemendNieuwsList.ItemsSource = null;
+            SearchResultList.ItemsSource = null;
+            LastLoadedDT = null;
+            await this.HandleWaldnetData();
+            this.RefreshButton.IsEnabled = true;
         }
     }
 }

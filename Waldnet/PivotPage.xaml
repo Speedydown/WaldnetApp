@@ -19,7 +19,15 @@
     </Page.Transitions>
 
     <Grid Background="White">
-        <ProgressBar x:Name="DataProgressBar" Foreground="#FF07519A" IsIndeterminate="True" VerticalAlignment="Top"/>
+        <ProgressBar x:Name="DataProgressBar" IsIndeterminate="True" VerticalAlignment="Top"/>
+        <Grid x:Name="NoInternetGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Wâldnet is op dit moment helaas niet beschikbaar :(" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="35" TextAlignment="Center" />
+            <TextBlock Grid.Row="1" Text="Opnieuw proberen? Klik dan op vernieuwen" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="15" TextAlignment="Center" Margin="0, 25" />
+        </Grid>
         <Pivot x:Uid="Pivot" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A" SelectionChanged="pivot_SelectionChanged">
             <PivotItem
                 Margin="0,5,0,0"               
@@ -294,6 +302,7 @@
         <CommandBar Background="#FFDCE7F3" Foreground="#FF07519A">
             <AppBarButton x:Uid="WaldnetButton" x:Name="WaldnetButton" Label="Wâldnet" Icon="World" Click="WaldnetButton_Click" />
             <AppBarButton x:Uid="WaldNetSearchButton" x:Name="WaldNetSearchButton" Label="Zoeken" Icon="Find" Visibility="Collapsed" Click="WaldNetSearchButton_Click"/>
+            <AppBarButton x:Uid="RefreshButton" x:Name="RefreshButton" Label="Vernieuwen" Icon="Refresh" Click="RefreshButton_Click" />
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="PrivacyPolicyButton" x:Name="PrivacyPolicyButton" Label="Privacy policy"  Click="PrivacyPolicyButton_Click"/>
             </CommandBar.SecondaryCommands>

@@ -43,13 +43,6 @@ namespace Waldnet
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             TileUpdateManager.CreateTileUpdaterForApplication().Clear();
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
-
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,

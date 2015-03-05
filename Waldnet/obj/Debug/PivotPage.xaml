@@ -288,6 +288,10 @@
                 </Grid>
             </PivotItem>
         </Pivot>
+        
+        <Grid x:Name="NoInternetGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="Wâldnet is op dit moment helaas niet beschikbaar :(" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="35" TextAlignment="Center" />
+        </Grid>
     </Grid>
 
     <Page.BottomAppBar>

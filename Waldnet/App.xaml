@@ -8,6 +8,8 @@
     <Application.Resources>
         <SolidColorBrush x:Key="PivotHeaderForegroundSelectedBrush" Color="#FF07519A" />
         <SolidColorBrush x:Key="PivotHeaderForegroundUnselectedBrush" Color="#FFDCE7F3" />
+        <x:String x:Key="ProgressBarIndeterminateForegroundThemeBrush">#FF07519A</x:String>
     </Application.Resources>
+
 
 </Application>

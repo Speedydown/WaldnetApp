@@ -123,7 +123,7 @@ namespace BackgroundTask
 
             string Output = string.Empty;
 
-            if (DataSemaphore.WaitOne(10000))
+            //if (DataSemaphore.WaitOne(10000))
             {
 
                 try
@@ -158,7 +158,7 @@ namespace BackgroundTask
 
             try
             {
-                DataSemaphore.Release();
+             //   DataSemaphore.Release();
             }
             catch
             {
@@ -178,7 +178,7 @@ namespace BackgroundTask
         {
             string Output = string.Empty;
 
-            if (DataSemaphore.WaitOne(10000))
+           // if (DataSemaphore.WaitOne(10000))
             {
                 try
                 {
@@ -216,7 +216,7 @@ namespace BackgroundTask
 
             try
             {
-                DataSemaphore.Release();
+             //   DataSemaphore.Release();
             }
             catch
             {

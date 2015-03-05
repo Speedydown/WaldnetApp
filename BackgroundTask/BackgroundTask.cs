@@ -21,44 +21,49 @@ namespace BackgroundTask
 
         private async Task GenerateNotifications()
         {
-            ApplicationData applicationData = ApplicationData.Current;
-            ApplicationDataContainer localSettings = applicationData.LocalSettings;
-            IList<NewsDay> News = await DataHandler.GetRegionalNews();
-            IList<NewsLink> NewsLink = new List<NewsLink>();
-
-            string LastURL = string.Empty;
-
-            if (localSettings.Values["LastNewsItem"] != null)
+            try
             {
-                LastURL = localSettings.Values["LastNewsItem"].ToString();
-            }
-            else
-            {
-                return;
-            }
+                ApplicationData applicationData = ApplicationData.Current;
+                ApplicationDataContainer localSettings = applicationData.LocalSettings;
+                IList<NewsDay> News = await DataHandler.GetRegionalNews();
+                IList<NewsLink> NewsLink = new List<NewsLink>();
 
-            int NotificationCounter = 0;
+                string LastURL = string.Empty;
 
-            foreach (NewsDay n in News)
-            {
-                foreach (NewsLink nl in n.NewsLinks)
+                if (localSettings.Values["LastNewsItem"] != null)
                 {
-                    if (nl.URL == LastURL)
+                    LastURL = localSettings.Values["LastNewsItem"].ToString();
+                }
+                else
+                {
+                    return;
+                }
+
+                int NotificationCounter = 0;
+
+                foreach (NewsDay n in News)
+                {
+                    foreach (NewsLink nl in n.NewsLinks)
                     {
-                        if (NotificationCounter > 0)
+                        if (nl.URL == LastURL)
                         {
-                            CreateTile(NewsLink, NotificationCounter);
+                            if (NotificationCounter > 0)
+                            {
+                                CreateTile(NewsLink, NotificationCounter);
+                            }
+
+                            return;
                         }
 
-                        return;
+                        NewsLink.Add(nl);
+                        NotificationCounter++;
                     }
-
-                    NewsLink.Add(nl);
-                    NotificationCounter++;
                 }
             }
+            catch(Exception)
+            {
 
-            
+            }            
         }
 
         private void CreateTile(IList<NewsLink> Content, int Counter)

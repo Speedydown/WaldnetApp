@@ -41,6 +41,7 @@ namespace BackgroundTask
             builder.Name = taskName;
             builder.TaskEntryPoint = taskEntryPoint;
             builder.SetTrigger(trigger);
+          //  builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
 
             if (condition != null)
             {

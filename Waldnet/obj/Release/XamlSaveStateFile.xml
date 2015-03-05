@@ -1,6 +1,6 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="c:\users\teake\documents\github\waldnetapp\waldnet\obj\release\intermediatexaml\waldnet.exe" HashGuid="4b7126f5-2940-45ef-4de7-318a11561162" />
-    <ReferenceAssembly PathName="c:\users\teake\documents\github\waldnetapp\backgroundtask\bin\release\backgroundtask.winmd" HashGuid="0ab2a8be-af3e-7c54-687e-27196f0e4f1c" />
+    <LocalAssembly PathName="c:\users\teake\documents\github\waldnetapp\waldnet\obj\release\intermediatexaml\waldnet.exe" HashGuid="c4ec4a15-08a4-25bc-eb13-9a22becab059" />
+    <ReferenceAssembly PathName="c:\users\teake\documents\github\waldnetapp\backgroundtask\bin\release\backgroundtask.winmd" HashGuid="04661ce2-f276-5882-1391-b30845177cc0" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

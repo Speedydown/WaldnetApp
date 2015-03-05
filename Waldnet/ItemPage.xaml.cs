@@ -107,6 +107,7 @@ namespace Waldnet
             NewsItem NI = await DataHandler.GetNewsItemFromURL(URL);
 
             LayoutRoot.DataContext = NI;
+            DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         /// <summary>
