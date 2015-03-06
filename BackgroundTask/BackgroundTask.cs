@@ -69,12 +69,40 @@ namespace BackgroundTask
         private void CreateTile(IList<NewsLink> Content, int Counter)
         {
             //LargeTile
-            XmlDocument tileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWide310x150BlockAndText01);
+            XmlDocument RectangleTile = CreateRectangleTile(Content, Counter);
+            XmlDocument SquareTile = CreateSquareTile();
+            XmlDocument SmallTile = CreateSmallTile();
+
+
+            //Badges
+            XmlDocument badgeXml = BadgeUpdateManager.GetTemplateContent(BadgeTemplateType.BadgeGlyph);
+            XmlElement badgeElement = (XmlElement)badgeXml.SelectSingleNode("/badge");
+            badgeElement.SetAttribute("value", Counter.ToString());
+
+            BadgeNotification badge = new BadgeNotification(badgeXml);
+            BadgeUpdateManager.CreateBadgeUpdaterForApplication().Update(badge);
+
+
+            //Add tiles together
+            IXmlNode node = RectangleTile.ImportNode(SquareTile.GetElementsByTagName("binding").Item(0), true);
+            RectangleTile.GetElementsByTagName("visual").Item(0).AppendChild(node);
+
+            node = RectangleTile.ImportNode(SmallTile.GetElementsByTagName("binding").Item(0), true);
+            RectangleTile.GetElementsByTagName("visual").Item(0).AppendChild(node);
+
+            TileNotification tileNotification = new TileNotification(RectangleTile);
+
+            TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
+        }
+
+        private XmlDocument CreateRectangleTile(IList<NewsLink> Content, int Counter)
+        {
+            XmlDocument tileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWide310x150IconWithBadgeAndText);
             XmlNodeList tileTextAttributes = tileXml.GetElementsByTagName("text");
 
             try
             {
-                tileTextAttributes[2].InnerText = Content[0].Name;
+                tileTextAttributes[0].InnerText = "Laatste nieuws:";
             }
             catch
             {
@@ -83,7 +111,7 @@ namespace BackgroundTask
 
             try
             {
-                tileTextAttributes[3].InnerText = Content[1].Name;
+                tileTextAttributes[1].InnerText = Content[0].Name;
             }
             catch
             {
@@ -92,56 +120,41 @@ namespace BackgroundTask
 
             try
             {
-                tileTextAttributes[4].InnerText = Content[2].Name;
+                tileTextAttributes[2].InnerText = Content[1].Name;
             }
             catch
             {
 
             }
 
-            try
-            {
-                tileTextAttributes[0].InnerText = Counter.ToString();
-                //tileTextAttributes[1].InnerText = "Vandaag op wâldnet";
-            }
-            catch
-            {
+            XmlNodeList tileImageAttributes = tileXml.GetElementsByTagName("image");
 
-            }
+            ((XmlElement)tileImageAttributes[0]).SetAttribute("src", "ms-appx:///assets/PompeBledTransparnt.png");
+            ((XmlElement)tileImageAttributes[0]).SetAttribute("alt", "Wâldnet.nl");
 
-            TileNotification tileNotification = new TileNotification(tileXml);
+            return tileXml;
+        }
 
-            TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
+        private XmlDocument CreateSquareTile()
+        {
+            XmlDocument squareTileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare71x71IconWithBadge);
+            XmlNodeList tileImageAttributes = squareTileXml.GetElementsByTagName("image");
 
-            //squarw
-            XmlDocument squareTileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150Block);
-            tileTextAttributes = squareTileXml.GetElementsByTagName("text");
+            ((XmlElement)tileImageAttributes[0]).SetAttribute("src", "ms-appx:///assets/PompeBledTransparnt.png");
+            ((XmlElement)tileImageAttributes[0]).SetAttribute("alt", "Wâldnet.nl");
 
-            try
-            {
-            //    tileTextAttributes[1].InnerText = Content[0].Name;
-            }
-            catch
-            {
+            return squareTileXml;
+        }
 
-            }
+        private XmlDocument CreateSmallTile()
+        {
+            XmlDocument SmallTIle = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150IconWithBadge);
+            XmlNodeList tileImageAttributes = SmallTIle.GetElementsByTagName("image");
 
-            try
-            {
-                tileTextAttributes[0].InnerText = Counter.ToString();
-            }
-            catch
-            {
+            ((XmlElement)tileImageAttributes[0]).SetAttribute("src", "ms-appx:///assets/PompeBledTransparnt.png");
+            ((XmlElement)tileImageAttributes[0]).SetAttribute("alt", "Wâldnet.nl");
 
-            }
-
-
-            IXmlNode node = tileXml.ImportNode(squareTileXml.GetElementsByTagName("binding").Item(0), true);
-            tileXml.GetElementsByTagName("visual").Item(0).AppendChild(node);
-
-            tileNotification = new TileNotification(tileXml);
-
-            TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
+            return SmallTIle;
         }
     }
 

@@ -10,3 +10,4 @@
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Assets\SplashScreen.scale-100.png"			"Assets\SplashScreen.scale-100.png"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Assets\SmallLogo.scale-100.png"			"Assets\SmallLogo.scale-100.png"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Assets\Logo.scale-100.png"			"Assets\Logo.scale-100.png"
+"C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Assets\BadgeLogo.scale-100.png"			"Assets\BadgeLogo.scale-100.png"

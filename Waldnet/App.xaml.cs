@@ -43,11 +43,12 @@ namespace Waldnet
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            BadgeUpdateManager.CreateBadgeUpdaterForApplication().Clear();
             Frame rootFrame = Window.Current.Content as Frame;
 
             if (PivotPage.Instance != null)
             {
-                PivotPage.Instance.HandleWaldnetData();
+                PivotPage.Instance.HandleWaldnetData(true);
             }
 
             // Do not repeat app initialization when the Window already has content,

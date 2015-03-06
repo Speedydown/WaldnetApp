@@ -64,14 +64,20 @@ namespace Waldnet
             await HandleWaldnetData();
         }
 
-        public async Task HandleWaldnetData()
+        public async Task HandleWaldnetData(bool OverrideTimer = false)
         {
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
+            if (OverrideTimer)
+            {
+                LastLoadedDT = DateTime.Now.AddHours(-1);
+            }
+
             TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            BadgeUpdateManager.CreateBadgeUpdaterForApplication().Clear();
             this.NoInternetGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
-            if (LastLoadedDT == null || DateTime.Now.Subtract((DateTime)LastLoadedDT).Minutes > 5)
+            if (LastLoadedDT == null || DateTime.Now.Subtract((DateTime)LastLoadedDT).TotalMinutes > 5)
             {
                 try
                 {
@@ -188,11 +194,13 @@ namespace Waldnet
                 SearchTextbox.Background = new SolidColorBrush(Colors.White);
                 WaldNetSearchButton.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 WaldnetButton.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                RefreshButton.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
             else
             {
                 WaldNetSearchButton.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 WaldnetButton.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                RefreshButton.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
         }
 
