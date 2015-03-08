@@ -28,7 +28,7 @@
             <TextBlock Grid.Row="0" Text="Wâldnet is op dit moment helaas niet beschikbaar :(" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="35" TextAlignment="Center" />
             <TextBlock Grid.Row="1" Text="Opnieuw proberen? Klik dan op vernieuwen" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="15" TextAlignment="Center" Margin="0, 25" />
         </Grid>
-        <Pivot x:Uid="Pivot" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A" SelectionChanged="pivot_SelectionChanged">
+        <Pivot x:Uid="Pivot" x:Name="pivotControl" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A" SelectionChanged="pivot_SelectionChanged">
             <PivotItem
                 Margin="0,5,0,0"               
                 CommonNavigationTransitionInfo.IsStaggerElement="True">

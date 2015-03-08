@@ -22,14 +22,11 @@ namespace BackgroundTask
         private static async Task<IList<NewsDay>> GetRegionalNewsHelper()
         {
             IList<NewsDay> NewsDays = new List<NewsDay>();
+            NewsDays = PageParser.ParseRegionalNews(await GetDataFromURL(""));
 
-            try
+            if (NewsDays.Count == 0)
             {
-                NewsDays = PageParser.ParseRegionalNews(await GetDataFromURL(""));
-            }
-            catch (Exception)
-            {
-
+                throw new Exception();
             }
 
             return NewsDays;
@@ -44,15 +41,7 @@ namespace BackgroundTask
         private static async Task<IList<NewsLink>> GetBusinessNewsHelper()
         {
             List<NewsLink> NewsLinks = new List<NewsLink>();
-
-            try
-            {
-                NewsLinks = PageParser.ParseBusinessNews(await GetDataFromURL("http://waldnet.nl/ondernemendnieuws.php"));
-            }
-            catch (Exception)
-            {
-
-            }
+            NewsLinks = PageParser.ParseBusinessNews(await GetDataFromURL("http://waldnet.nl/ondernemendnieuws.php"));
 
             return NewsLinks;
         }

@@ -190,6 +190,7 @@
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
+    <MainPackageIdentityName>52891Speedydown.112Frysln</MainPackageIdentityName>
     <MainPackageIdentityName>52891Speedydown.BekendeNederlanders</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=318dc758-7169-4d4f-9142-ef855f21aa10">
@@ -197,17 +198,17 @@
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture></PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.1.0.4</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>1.1.0.5</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.1.0.4</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>1.1.0.5</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture></PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.1.0.4</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>1.1.0.5</PackageMaxArchitectureVersion>
       </PackageInfo>
     </BundleInfo>
   </PackageInfoList>

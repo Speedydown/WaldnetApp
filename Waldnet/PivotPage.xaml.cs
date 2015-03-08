@@ -76,6 +76,7 @@ namespace Waldnet
             TileUpdateManager.CreateTileUpdaterForApplication().Clear();
             BadgeUpdateManager.CreateBadgeUpdaterForApplication().Clear();
             this.NoInternetGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            this.pivotControl.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
             if (LastLoadedDT == null || DateTime.Now.Subtract((DateTime)LastLoadedDT).TotalMinutes > 5)
             {
@@ -119,6 +120,7 @@ namespace Waldnet
                 }
                 catch (Exception)
                 {
+                    this.pivotControl.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     this.NoInternetGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
             }
@@ -173,7 +175,7 @@ namespace Waldnet
         {
             string hexaColor = "#DCE7F3";
 
-            foreach (PivotItem pi in pivot.Items)
+            foreach (PivotItem pi in this.pivotControl.Items)
             {
                 (pi.Header as TextBlock).Foreground = new SolidColorBrush(Color.FromArgb(255,
                 Convert.ToByte(hexaColor.Substring(1, 2), 16),
@@ -184,12 +186,12 @@ namespace Waldnet
 
             hexaColor = "#07519A";
 
-            ((pivot.SelectedItem as PivotItem).Header as TextBlock).Foreground = new SolidColorBrush(Color.FromArgb(255,
+            ((this.pivotControl.SelectedItem as PivotItem).Header as TextBlock).Foreground = new SolidColorBrush(Color.FromArgb(255,
                 Convert.ToByte(hexaColor.Substring(1, 2), 16),
                 Convert.ToByte(hexaColor.Substring(3, 2), 16),
                 Convert.ToByte(hexaColor.Substring(5, 2), 16)));
 
-            if ((pivot.SelectedItem as PivotItem).Name == "SearchPivot")
+            if ((this.pivotControl.SelectedItem as PivotItem).Name == "SearchPivot")
             {
                 SearchTextbox.Background = new SolidColorBrush(Colors.White);
                 WaldNetSearchButton.Visibility = Windows.UI.Xaml.Visibility.Visible;
