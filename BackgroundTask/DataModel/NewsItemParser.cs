@@ -194,6 +194,27 @@ namespace BackgroundTask
 
             //linkjes moeten nog uit de text worden gehaald
 
+            if (Input.Contains("</table>"))
+            {
+                int StartIndex = Input.IndexOf("<table");
+                int EndIndex = Input.LastIndexOf("</table>") + "</table>".Length;
+
+                if (StartIndex != -1 && EndIndex != -1)
+                {
+                    string Temp = Input.Substring(0, StartIndex);
+
+                    try
+                    {
+                        Input = Temp + Input.Substring(EndIndex);
+                    }
+                    catch
+                    {
+                        Input = Temp;
+                    }
+                }
+            }
+
+
             return Input;
         }
 
@@ -391,7 +412,22 @@ namespace BackgroundTask
                 StartOFReaction += "width: 474px\">".Length;
                 string Reaction = Input.Substring(StartOFReaction, EndOFReaction - StartOFReaction);
 
-                Reaction = Reaction.Replace("<br />", "\n");
+                
+                Reaction = Reaction.Replace("<br />", "");
+
+                try
+                {
+                    string Tempsubstring = Reaction.Substring(Reaction.Length - 1);
+
+                    if (Tempsubstring == "\n")
+                    {
+                        Reaction = Reaction.Substring(0, Reaction.Length - 1);
+                    }
+                }
+                catch
+                {
+
+                }
 
                 Reaction = WebUtility.HtmlDecode(Reaction);
 

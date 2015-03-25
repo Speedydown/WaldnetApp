@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.System;
 using Windows.Phone.UI.Input;
 using BackgroundTask;
+using System.Threading.Tasks;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -109,6 +110,8 @@ namespace Waldnet
             LayoutRoot.DataContext = NI;
             ArticleCounter.AddArticleCount();
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
+            Task t = Task.Run(() => DataHandler.GetDataFromURL("http://speedydown-001-site2.smarterasp.net/api.ashx?Article=" + NI.Header));
         }
 
         /// <summary>
