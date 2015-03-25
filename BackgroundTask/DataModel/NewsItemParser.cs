@@ -228,22 +228,29 @@ namespace BackgroundTask
         {
             string ImageUrl = string.Empty;
 
-            foreach (string s in Paragraphs)
+            for(int i = 0; i < Paragraphs.Count; i++)
             {
-                int IndexOfImage = s.IndexOf("http://media.waldnet.nl/");
+                int IndexOfImage = Paragraphs[i].IndexOf("http://media.waldnet.nl/");
 
                 if (IndexOfImage == -1)
                 {
                     continue;
                 }
 
-                string Tempstring = s.Substring(s.IndexOf("http://media.waldnet.nl/"));
+                string Tempstring = Paragraphs[i].Substring(Paragraphs[i].IndexOf("http://media.waldnet.nl/"));
 
 
                 ImageUrl = Tempstring.Substring(0, Tempstring.IndexOf("\""));
 
-                Paragraphs.Remove(s);
-                break;
+                if (Paragraphs.Count > 1)
+                {
+                    Paragraphs.Remove(Paragraphs[i]);
+                    break;
+                }
+                else
+                {
+                    Paragraphs[i] = Paragraphs[i].Substring(0, Paragraphs[i].IndexOf("<img"));
+                }
             }
 
             return ImageUrl;
