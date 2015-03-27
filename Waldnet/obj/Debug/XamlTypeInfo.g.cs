@@ -124,7 +124,7 @@ namespace Waldnet.Waldnet_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[9];
+            _typeNameTable = new string[10];
             _typeNameTable[0] = "Waldnet.ItemPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
@@ -134,8 +134,9 @@ namespace Waldnet.Waldnet_XamlTypeInfo
             _typeNameTable[6] = "Object";
             _typeNameTable[7] = "String";
             _typeNameTable[8] = "Waldnet.PivotPage";
+            _typeNameTable[9] = "Waldnet.Settings";
 
-            _typeTable = new global::System.Type[9];
+            _typeTable = new global::System.Type[10];
             _typeTable[0] = typeof(global::Waldnet.ItemPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
@@ -145,6 +146,7 @@ namespace Waldnet.Waldnet_XamlTypeInfo
             _typeTable[6] = typeof(global::System.Object);
             _typeTable[7] = typeof(global::System.String);
             _typeTable[8] = typeof(global::Waldnet.PivotPage);
+            _typeTable[9] = typeof(global::Waldnet.Settings);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -182,6 +184,7 @@ namespace Waldnet.Waldnet_XamlTypeInfo
         private object Activate_0_ItemPage() { return new global::Waldnet.ItemPage(); }
         private object Activate_5_ObservableDictionary() { return new global::Waldnet.Common.ObservableDictionary(); }
         private object Activate_8_PivotPage() { return new global::Waldnet.PivotPage(); }
+        private object Activate_9_Settings() { return new global::Waldnet.Settings(); }
         private void MapAdd_5_ObservableDictionary(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.String, global::System.Object>)instance;
@@ -252,6 +255,15 @@ namespace Waldnet.Waldnet_XamlTypeInfo
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
+
+            case 9:   //  Waldnet.Settings
+                userType = new global::Waldnet.Waldnet_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_9_Settings;
+                userType.AddMemberName("NavigationHelper");
+                userType.AddMemberName("DefaultViewModel");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
             }
             return xamlType;
         }
@@ -275,6 +287,16 @@ namespace Waldnet.Waldnet_XamlTypeInfo
         private object get_3_PivotPage_DefaultViewModel(object instance)
         {
             var that = (global::Waldnet.PivotPage)instance;
+            return that.DefaultViewModel;
+        }
+        private object get_4_Settings_NavigationHelper(object instance)
+        {
+            var that = (global::Waldnet.Settings)instance;
+            return that.NavigationHelper;
+        }
+        private object get_5_Settings_DefaultViewModel(object instance)
+        {
+            var that = (global::Waldnet.Settings)instance;
             return that.DefaultViewModel;
         }
 
@@ -307,6 +329,18 @@ namespace Waldnet.Waldnet_XamlTypeInfo
                 userType = (global::Waldnet.Waldnet_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Waldnet.PivotPage");
                 xamlMember = new global::Waldnet.Waldnet_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "Waldnet.Common.ObservableDictionary");
                 xamlMember.Getter = get_3_PivotPage_DefaultViewModel;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Waldnet.Settings.NavigationHelper":
+                userType = (global::Waldnet.Waldnet_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Waldnet.Settings");
+                xamlMember = new global::Waldnet.Waldnet_XamlTypeInfo.XamlMember(this, "NavigationHelper", "Waldnet.Common.NavigationHelper");
+                xamlMember.Getter = get_4_Settings_NavigationHelper;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Waldnet.Settings.DefaultViewModel":
+                userType = (global::Waldnet.Waldnet_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Waldnet.Settings");
+                xamlMember = new global::Waldnet.Waldnet_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "Waldnet.Common.ObservableDictionary");
+                xamlMember.Getter = get_5_Settings_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             }
@@ -634,5 +668,6 @@ namespace Waldnet.Waldnet_XamlTypeInfo
         }
     }
 }
+
 
 

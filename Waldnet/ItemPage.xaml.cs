@@ -20,6 +20,7 @@ using Windows.System;
 using Windows.Phone.UI.Input;
 using BackgroundTask;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -33,7 +34,7 @@ namespace Waldnet
         RelayCommand _checkedGoBackCommand;
         private readonly NavigationHelper navigationHelper;
         private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
-
+        public bool EnableReactions = true;
         private bool FullsizeImage = false;
 
         public ItemPage()
@@ -72,37 +73,33 @@ namespace Waldnet
             }
         }
 
-
-        /// <summary>
-        /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
-        /// </summary>
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
         }
 
-        /// <summary>
-        /// Gets the view model for this <see cref="Page"/>.
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
         public ObservableDictionary DefaultViewModel
         {
             get { return this.defaultViewModel; }
         }
 
-        /// <summary>
-        /// Populates the page with content passed during navigation. Any saved state is also
-        /// provided when recreating a page from a prior session.
-        /// </summary>
-        /// <param name="sender">
-        /// The source of the event; typically <see cref="NavigationHelper"/>.
-        /// </param>
-        /// <param name="e">Event data that provides both the navigation parameter passed to
-        /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
-        /// a dictionary of state preserved by this page during an earlier
-        /// session.  The state will be null the first time a page is visited.</param>
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("EnableReactions"))
+            {
+                this.EnableReactions = (bool)(ApplicationData.Current.LocalSettings.Values["EnableReactions"]);
+            }
+            else
+            {
+                this.EnableReactions = true;
+            }
+
+            //Hide reactions
+            this.ReactionFooterGrid.Visibility = (this.EnableReactions ? Windows.UI.Xaml.Visibility.Visible : Windows.UI.Xaml.Visibility.Collapsed);
+            this.ReactionsListview.Visibility = (this.EnableReactions ? Windows.UI.Xaml.Visibility.Visible : Windows.UI.Xaml.Visibility.Collapsed);
+            this.ReactionsHeaderContent.Visibility = (this.EnableReactions ? Windows.UI.Xaml.Visibility.Visible : Windows.UI.Xaml.Visibility.Collapsed);
+            //
+
             string URL = (string)e.NavigationParameter;
 
             NewsItem NI = await DataHandler.GetNewsItemFromURL(URL);

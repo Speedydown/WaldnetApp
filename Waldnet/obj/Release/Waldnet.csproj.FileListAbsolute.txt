@@ -39,3 +39,8 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\BackgroundTask.wi
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\BackgroundTask.pdb
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\BackgroundTask.pri
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Waldnet.csprojResolveAssemblyReference.cache
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Settings.xbf
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Settings.g.i.cs
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Settings.g.cs
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Settings.xaml
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Settings.xbf

@@ -304,7 +304,8 @@
             <AppBarButton x:ConnectionId='7' x:Uid="WaldNetSearchButton" x:Name="WaldNetSearchButton" Label="Zoeken" Icon="Find" Visibility="Collapsed"                                  />
             <AppBarButton x:ConnectionId='8' x:Uid="RefreshButton" x:Name="RefreshButton" Label="Vernieuwen" Icon="Refresh"                             />
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='9' x:Uid="PrivacyPolicyButton" x:Name="PrivacyPolicyButton" Label="Privacy policy"                                   />
+                <AppBarButton x:ConnectionId='9' x:Uid="SettingsButton" x:Name="SettingsButton" Label="Instellingen"                              />
+                <AppBarButton x:ConnectionId='10' x:Uid="PrivacyPolicyButton" x:Name="PrivacyPolicyButton" Label="Privacy policy"                                   />
             </CommandBar.SecondaryCommands>
         </CommandBar>
 
