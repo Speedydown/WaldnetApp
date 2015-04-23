@@ -39,3 +39,8 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\qualifiers.txt
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ProjectArchitectures.txt
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Settings.xbf
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.g.i.cs
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.g.cs
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.xaml
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.xbf

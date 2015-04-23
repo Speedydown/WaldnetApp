@@ -133,6 +133,9 @@
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\PivotPage.xbf">
       <PackagePath>PivotPage.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Settings.xbf">
+      <PackagePath>Settings.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Waldnet.xr.xml">
       <PackagePath>Waldnet.xr.xml</PackagePath>
     </AppxPackagedFile>
