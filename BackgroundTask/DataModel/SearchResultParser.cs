@@ -12,14 +12,23 @@ namespace BackgroundTask
         public static IList<SearchResult> GetNewsLinksFromSearchResult(string Input)
         {
             List<SearchResult> NewsLinkList = new List<SearchResult>();
-            int IndexOfResults = Input.IndexOf("<div class=content><table cellspacing=1 cellpadding=1 border=0>");
+            int IndexOfResults = Input.IndexOf("class=menukop>RESULTATEN VOOR");
 
             if (IndexOfResults == -1)
             {
                 return NewsLinkList;
             }
 
-            Input = Input.Substring(IndexOfResults + "<div class=content><table cellspacing=1 cellpadding=1 border=0>".Length);
+            Input = Input.Substring(IndexOfResults + "class=menukop>RESULTATEN VOOR".Length);
+
+            IndexOfResults = Input.IndexOf("</td></tr>");
+
+            if (IndexOfResults == -1)
+            {
+                return NewsLinkList;
+            }
+
+            Input = Input.Substring(IndexOfResults + "</td></tr>".Length);
 
             List<string> ContentList = new List<string>();
 
@@ -63,21 +72,21 @@ namespace BackgroundTask
 
                 C = C.Substring(EndOFLink + "\">".Length);
 
-                int EndOFText = C.IndexOf("</a> </td><td><font size=1>");
+                int EndOFText = C.IndexOf("</a>");
 
                 string Text = C.Substring(0, EndOFText);
 
                 Text = WebUtility.HtmlDecode(Text).Trim();
 
-                C = C.Substring(EndOFText + "</a> </td><td><font size=1>".Length);
+                C = C.Substring(EndOFText + "</a>".Length);
 
-                int EndOfPlaats = C.IndexOf("</font></td><td>");
+                //int EndOfPlaats = C.IndexOf("</font></td><td>");
 
-                string Plaats = C.Substring(0, EndOfPlaats);
+                //string Plaats = C.Substring(0, EndOfPlaats);
 
-                string NewsType = C.Substring(EndOfPlaats + "</font></td><td>".Length);
+                //string NewsType = C.Substring(EndOfPlaats + "</font></td><td>".Length);
 
-                NewsLinkList.Add(new SearchResult(Datum, Link, Text, Plaats, NewsType));
+                NewsLinkList.Add(new SearchResult(Datum, Link, Text, string.Empty, string.Empty));
                  
             }
 

@@ -250,7 +250,7 @@
                                     Foreground="#FF07519A" 
                                                 FontSize="18"
                                     Margin="9,0,0,0"/>
-                                    <TextBlock
+                                    <!--<TextBlock
                                         Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1"
                                     Text=" - "
                                     TextWrapping="NoWrap"
@@ -258,8 +258,8 @@
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Foreground="#FF07519A" 
                                                 FontSize="18"
-                                    Margin="4,0,0,0"/>
-                                    <TextBlock
+                                    Margin="4,0,0,0"/>-->
+                                    <!--<TextBlock
                                         Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1"
                                     Text="{Binding Plaats}"
                                     TextWrapping="NoWrap"
@@ -267,7 +267,7 @@
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Foreground="#FF07519A" 
                                                 FontSize="18"
-                                    Margin="4,0,0,0"/>
+                                    Margin="4,0,0,0"/>-->
 
 
                                     <TextBlock

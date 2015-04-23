@@ -26,13 +26,21 @@ namespace BackgroundTask
             this.URL = URL;
             this.Text = Text;
             this.Plaats = Plaats;
+            this.NewsType = "[Nieuws]";
 
-            if (this.Plaats[0] == '(')
-            {
-                this.Plaats = this.Plaats.Substring(1, this.Plaats.Length - 2);
-            }
+            //try
+            //{
+            //    if (this.Plaats[0] == '(')
+            //    {
+            //        this.Plaats = this.Plaats.Substring(1, this.Plaats.Length - 2);
+            //    }
 
-            this.NewsType = "["+ NewsType + "]";
+            //    this.NewsType = "[" + NewsType + "]";
+            //}
+            //catch
+            //{
+
+            //}
         }
     }
 }
