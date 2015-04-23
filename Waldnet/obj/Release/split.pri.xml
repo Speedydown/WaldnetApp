@@ -20,6 +20,11 @@
 					<Value>PivotPage.xbf</Value>
 				</Candidate>
 			</NamedResource>
+			<NamedResource name="Settings.xbf" uri="ms-resource://52891Speedydown.Wldnet/Files/Settings.xbf">
+				<Candidate type="Path">
+					<Value>Settings.xbf</Value>
+				</Candidate>
+			</NamedResource>
 			<NamedResource name="Waldnet.xr.xml" uri="ms-resource://52891Speedydown.Wldnet/Files/Waldnet.xr.xml">
 				<Candidate type="Path">
 					<Value>Waldnet.xr.xml</Value>

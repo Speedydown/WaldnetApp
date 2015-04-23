@@ -262,5 +262,13 @@ namespace Waldnet
             await this.HandleWaldnetData();
             this.RefreshButton.IsEnabled = true;
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Frame.Navigate(typeof(Settings)))
+            {
+
+            }
+        }
     }
 }

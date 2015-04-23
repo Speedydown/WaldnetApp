@@ -46,10 +46,12 @@
       <RootProperty Name="ChildrenTransitions" />
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Children" />
+      <RootProperty Name="MinHeight" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Margin" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
       <RootMethod Name="GetColumn" />
@@ -182,5 +184,14 @@
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Waldnet.PivotPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="IsOn" />
+      <RootProperty Name="OnContent" />
+      <RootProperty Name="OffContent" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootEvent Name="Toggled" />
+    </RootType>
+    <RootType FullName="Waldnet.Settings" />
   </Roots.RootTypes>
 </Roots>

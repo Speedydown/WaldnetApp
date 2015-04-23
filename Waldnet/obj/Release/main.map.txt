@@ -7,6 +7,7 @@
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\split.pri"			"resources.pri"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Waldnet.xr.xml"			"Waldnet.xr.xml"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Waldnet.exe"			"Waldnet.exe"
+"C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Settings.xbf"			"Settings.xbf"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\PivotPage.xbf"			"PivotPage.xbf"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\ItemPage.xbf"			"ItemPage.xbf"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\BackgroundTask.winmd"			"BackgroundTask.winmd"

@@ -101,11 +101,11 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
-                <Grid Background="#FF0061B0" Grid.Row="2">
-                    <TextBlock x:Uid="NewsContext" Text="{Binding ReactionCount}" Margin="5,2,0,2" Foreground="White" FontSize="13" TextWrapping="WrapWholeWords" />
+                <Grid x:Name="ReactionsHeaderGrid" Background="#FF0061B0" Grid.Row="2" MinHeight="15">
+                    <TextBlock x:Name="ReactionsHeaderContent" Text="{Binding ReactionCount}" Margin="5,2,0,2" Foreground="White" FontSize="13" TextWrapping="WrapWholeWords" />
                 </Grid>
 
-                <ListView Grid.Row="3"
+                <ListView x:Name="ReactionsListview" Grid.Row="3"
                                     Margin="2,0,2,0"
                                     ItemsSource="{Binding Reactions}"
                     IsItemClickEnabled="False"
@@ -167,7 +167,7 @@
                 </ListView>
 
 
-                <Border Grid.Row="4" BorderBrush="#FF07519A" BorderThickness="1" Margin="2,5,2,5">
+                <Border x:Name="ReactionFooterGrid" Grid.Row="4" BorderBrush="#FF07519A" BorderThickness="1" Margin="2,5,2,5">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>

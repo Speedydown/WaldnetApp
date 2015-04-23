@@ -304,6 +304,7 @@
             <AppBarButton x:Uid="WaldNetSearchButton" x:Name="WaldNetSearchButton" Label="Zoeken" Icon="Find" Visibility="Collapsed" Click="WaldNetSearchButton_Click"/>
             <AppBarButton x:Uid="RefreshButton" x:Name="RefreshButton" Label="Vernieuwen" Icon="Refresh" Click="RefreshButton_Click" />
             <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="SettingsButton" x:Name="SettingsButton" Label="Instellingen"  Click="SettingsButton_Click"/>
                 <AppBarButton x:Uid="PrivacyPolicyButton" x:Name="PrivacyPolicyButton" Label="Privacy policy"  Click="PrivacyPolicyButton_Click"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
