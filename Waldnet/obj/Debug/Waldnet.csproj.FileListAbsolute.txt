@@ -1,6 +1,7 @@
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\App.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\ItemPage.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\PivotPage.xbf
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Settings.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Waldnet.xr.xml
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Waldnet.exe
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Waldnet.pdb
@@ -17,13 +18,17 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ItemPage.g.i.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ItemPage.g.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.g.i.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.g.cs
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.g.i.cs
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.g.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\XamlTypeInfo.g.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\App.xaml
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ItemPage.xaml
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.xaml
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.xaml
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\App.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ItemPage.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\PivotPage.xbf
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.xbf
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\XamlSaveStateFile.xml
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Waldnet.exe
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Waldnet.pdb
@@ -39,8 +44,3 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\qualifiers.txt
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\ProjectArchitectures.txt
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Settings.xbf
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.g.i.cs
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.g.cs
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.xaml
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Settings.xbf

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="52891Speedydown.Wldnet" version="1.0" primary="true">
+		<Qualifiers>
+			<Scale>240</Scale>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<NamedResource name="App.xbf" uri="ms-resource://52891Speedydown.Wldnet/Files/App.xbf">
+				<Candidate type="Path">
+					<Value>App.xbf</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="ItemPage.xbf" uri="ms-resource://52891Speedydown.Wldnet/Files/ItemPage.xbf">
+				<Candidate type="Path">
+					<Value>ItemPage.xbf</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="PivotPage.xbf" uri="ms-resource://52891Speedydown.Wldnet/Files/PivotPage.xbf">
+				<Candidate type="Path">
+					<Value>PivotPage.xbf</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Settings.xbf" uri="ms-resource://52891Speedydown.Wldnet/Files/Settings.xbf">
+				<Candidate type="Path">
+					<Value>Settings.xbf</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Waldnet.xr.xml" uri="ms-resource://52891Speedydown.Wldnet/Files/Waldnet.xr.xml">
+				<Candidate type="Path">
+					<Value>Waldnet.xr.xml</Value>
+				</Candidate>
+			</NamedResource>
+			<ResourceMapSubtree name="Assets">
+				<NamedResource name="BadgeLogo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/BadgeLogo.png">
+					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
+						<Value>Assets\BadgeLogo.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="business.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/business.png">
+					<Candidate type="Path">
+						<Value>Assets\business.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Logo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/Logo.png">
+					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
+						<Value>Assets\Logo.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="NewsLogo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/NewsLogo.png">
+					<Candidate type="Path">
+						<Value>Assets\NewsLogo.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="PompeBledTransparnt.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/PompeBledTransparnt.png">
+					<Candidate type="Path">
+						<Value>Assets\PompeBledTransparnt.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SmallLogo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/SmallLogo.png">
+					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
+						<Value>Assets\SmallLogo.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SplashScreen.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/SplashScreen.png">
+					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
+						<Value>Assets\SplashScreen.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Sport.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/Sport.png">
+					<Candidate type="Path">
+						<Value>Assets\Sport.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square71x71Logo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/Square71x71Logo.png">
+					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
+						<Value>Assets\Square71x71Logo.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="StoreLogo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/StoreLogo.png">
+					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
+						<Value>Assets\StoreLogo.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TransparantW.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/TransparantW.png">
+					<Candidate type="Path">
+						<Value>Assets\TransparantW.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WideLogo.png" uri="ms-resource://52891Speedydown.Wldnet/Files/Assets/WideLogo.png">
+					<Candidate qualifiers="Scale-240" isDefault="true" type="Path">
+						<Value>Assets\WideLogo.scale-240.png</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Common">
+				<NamedResource name="ReadMe.txt" uri="ms-resource://52891Speedydown.Wldnet/Files/Common/ReadMe.txt">
+					<Candidate type="Path">
+						<Value>Common\ReadMe.txt</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace BackgroundTask
 {
@@ -13,6 +14,13 @@ namespace BackgroundTask
 
         public async static Task<NewsItem> ParseNews(string Input)
         {
+            bool EnableImages = true;
+
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("EnableImages"))
+            {
+                EnableImages = (bool)(ApplicationData.Current.LocalSettings.Values["EnableImages"]);
+            }
+
             NewsItem NI = null;
 
             try
@@ -22,28 +30,33 @@ namespace BackgroundTask
                 string Datum = GetDatum(Input);
                 string Header = GetHeader(Input);
                 List<string> Content = GetContent(Input);
-                string ImageURL = GetImageURL(Content);
                 List<string> NewsImages = new List<string>();
+
+                string ImageURL = GetImageURL(Content);
+
+                if (EnableImages)
+                {
+                    if (ImageURL == string.Empty)
+                    {
+                        string Image = GetImageFromArticle(Content);
+
+                        if (Image != string.Empty)
+                        {
+                            NewsImages.Add(Image);
+                        }
+                    }
+                    else
+                    {
+                        NewsImages = await GetImagesFromImagesPage(ImageURL);
+
+                        if (Content.Count == 1)
+                        {
+                            Content[0] = CleanLeftOverImageURLIfThereIsOneParagraph(Content[0]);
+                        }
+                    }
+                }
+
                 List<Reaction> Reactions = new List<Reaction>();
-
-                if (ImageURL == string.Empty)
-                {
-                    string Image = GetImageFromArticle(Content);
-
-                    if (Image != string.Empty)
-                    {
-                        NewsImages.Add(Image);
-                    }
-                }
-                else
-                {
-                    NewsImages = await GetImagesFromImagesPage(ImageURL);
-
-                    if (Content.Count == 1)
-                    {
-                        Content[0] = CleanLeftOverImageURLIfThereIsOneParagraph(Content[0]);
-                    }
-                }
 
                 string ReactionsURL = GetReactionsURL(Input);
 

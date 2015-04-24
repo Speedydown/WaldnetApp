@@ -24,6 +24,7 @@ namespace Waldnet
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         public bool EnableReactions = true;
+        public bool EnableImages = true;
         
         public Settings()
         {
@@ -55,7 +56,17 @@ namespace Waldnet
                 this.EnableReactions = true;
             }
 
-            this.DataContext = this.EnableReactions;
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("EnableImages"))
+            {
+                this.EnableImages = (bool)(ApplicationData.Current.LocalSettings.Values["EnableImages"]);
+            }
+            else
+            {
+                this.EnableImages = true;
+            }
+
+            this.ToggleSwitch.DataContext = this.EnableReactions;
+            this.ImageSwitch.DataContext = this.EnableImages;
         }
 
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
@@ -99,6 +110,13 @@ namespace Waldnet
             this.EnableReactions = ToggleSwitch.IsOn;
 
             ApplicationData.Current.LocalSettings.Values["EnableReactions"] = this.EnableReactions;
+        }
+
+        private void ImageSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            this.EnableImages = ImageSwitch.IsOn;
+
+            ApplicationData.Current.LocalSettings.Values["EnableImages"] = this.EnableImages;
         }
     }
 }
