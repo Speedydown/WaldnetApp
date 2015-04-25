@@ -45,14 +45,17 @@ namespace BackgroundTask
 
         private static string FindStartOfNews(string Input)
         {
-            int IndexOfStart = Input.IndexOf("<div class=content>");
+            int IndexOfStartYnhald = Input.IndexOf("<div class=ynhald>");
+            int IndexOfStartContent = Input.IndexOf("<div class=content>");
 
-            if (IndexOfStart == -1)
+            if (IndexOfStartYnhald == -1 && IndexOfStartContent == -1)
             {
                 throw new Exception();
             }
 
-            return Input.Substring(IndexOfStart + "<div class=content>".Length);
+            int IndexOfStart = (IndexOfStartYnhald != -1 && IndexOfStartYnhald < IndexOfStartContent) ? IndexOfStartYnhald : IndexOfStartContent;
+
+            return Input.Substring(IndexOfStart + "<div class=ynhald>".Length);
         }
 
         private static List<NewsLink> ParseDay(string Input)
