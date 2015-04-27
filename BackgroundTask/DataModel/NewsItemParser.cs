@@ -32,15 +32,15 @@ namespace BackgroundTask
                 List<string> Content = GetContent(Input);
                 List<string> NewsImages = new List<string>();
 
-                string ImageURL = GetImageURL(Content);
+                string ImageURL = GetImageURL(Input);
 
                 if (EnableImages)
                 {
                     if (ImageURL == string.Empty)
                     {
-                        string Image = GetImageFromArticle(Content);
+                        string Image = GetImageFromArticle(Input);
 
-                        if (Image != string.Empty)
+                        if (Image != string.Empty && Image.Length < 1000)
                         {
                             NewsImages.Add(Image);
                         }
@@ -84,7 +84,7 @@ namespace BackgroundTask
 
         public static string GetContentSubstring(string Input)
         {
-            int StartPos = Input.IndexOf("<div class=data>");
+            int StartPos = Input.IndexOf("<div class=artikel>");
 
             if (StartPos == -1)
             {
@@ -258,6 +258,32 @@ namespace BackgroundTask
             return ImageUrl;
         }
 
+        private static string GetImageURL(string Input)
+        {
+            int IndexOfImage = Input.IndexOf("/wn/fotonieuws/");
+            int ENdIndexOfimage = Input.IndexOf("\"><img");
+
+            if (IndexOfImage == -1 || ENdIndexOfimage == -1)
+            {
+                return string.Empty;
+            }
+
+            return "http://www.waldnet.nl" + Input.Substring(IndexOfImage, ENdIndexOfimage - IndexOfImage);
+        }
+
+        private static string GetImageFromArticle(string Input)
+        {
+            int IndexOfImage = Input.IndexOf("http://media.waldnet.nl");
+            int ENdIndexOfimage = Input.IndexOf("\" width");
+
+            if (IndexOfImage == -1 || ENdIndexOfimage == -1)
+            {
+                return string.Empty;
+            }
+
+            return Input.Substring(IndexOfImage, ENdIndexOfimage - IndexOfImage);
+        }
+
         private static string GetImageFromArticle(List<string> Paragraphs)
         {
             string ImageUrl = string.Empty;
@@ -296,14 +322,15 @@ namespace BackgroundTask
 
             string Input = await DataHandler.GetDataFromURL(URL);
 
-            int StartIndex = Input.IndexOf("<div class=paginanb>");
+            int StartIndex = Input.IndexOf("<table border=0 cellspacing=0 cellpadding=0>");
+            int EndIndex = Input.IndexOf("</TABLE>");
 
-            if (StartIndex == -1)
+            if (StartIndex == -1 || EndIndex == -1)
             {
                 return ImagesList;
             }
 
-            Input = Input.Substring(StartIndex);
+            Input = Input.Substring(StartIndex, EndIndex - StartIndex);
 
             while (Input.Length > 0)
             {
