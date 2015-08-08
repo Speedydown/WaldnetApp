@@ -44,3 +44,10 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Settings.g.i.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Settings.g.cs
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Settings.xaml
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Settings.xbf
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WebCrawlerTools.dll
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WebCrawlerTools.pdb
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WebCrawlerTools.pri
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\Waldnet.csproj.GenerateResource.Cache
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WRCHelperLibrary.winmd
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WRCHelperLibrary.pdb
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WRCHelperLibrary.pri

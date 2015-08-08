@@ -24,6 +24,7 @@ using Windows.UI.Notifications;
 using System.Threading.Tasks;
 using Windows.Storage;
 using BackgroundTask;
+using WRCHelperLibrary;
 
 namespace Waldnet
 {
@@ -101,7 +102,7 @@ namespace Waldnet
 
                     if (LastLoadedDT == null)
                     {
-                        NotificationHandler.Run();
+                        NotificationHandler.Run("BackgroundTask.BackgroundTask", "WâldnetTileUpdateService");
                     }
 
                     ApplicationData applicationData = ApplicationData.Current;

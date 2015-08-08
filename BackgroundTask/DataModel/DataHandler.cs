@@ -12,8 +12,6 @@ namespace BackgroundTask
 {
     public static class DataHandler
     {
-        private static Semaphore DataSemaphore = new Semaphore(1, 1);
-
         public static IAsyncOperation<IList<NewsDay>> GetRegionalNews()
         {
             return GetRegionalNewsHelper().AsAsyncOperation();
@@ -112,50 +110,25 @@ namespace BackgroundTask
 
             string Output = string.Empty;
 
-            //if (DataSemaphore.WaitOne(10000))
-            {
-
-                try
-                {
-                    var client = new System.Net.Http.HttpClient();
-
-                    var response = await client.GetAsync(new Uri(URL));
-
-                    var ByteArray = await response.Content.ReadAsByteArrayAsync();
-                    Output = Encoding.GetEncoding("iso-8859-1").GetString(ByteArray, 0, ByteArray.Length);
-                }
-                catch (HttpRequestException)
-                {
-                    //ErrorDialog.ShowError("Geen verbinding", "Geen verbinding naar de server. Controleer uw internet verbinding.");
-                }
-                catch (TaskCanceledException)
-                {
-                    // ErrorDialog.ShowError("Geen verbinding", "Geen verbinding naar de server. Controleer uw internet verbinding.");
-                }
-                //catch (Exception e)
-                //{
-                //   // ErrorDialog.ShowError("OOOps..", "Er gaat iets mis.");
-
-                //   // if (SendExceptions)
-                //    {
-                //    //    new AppException(0, e);
-                //    }
-                //}
-
-
-            }
-
             try
             {
-             //   DataSemaphore.Release();
-            }
-            catch
-            {
+                var client = new System.Net.Http.HttpClient();
 
+                var response = await client.GetAsync(new Uri(URL));
+
+                var ByteArray = await response.Content.ReadAsByteArrayAsync();
+                Output = Encoding.GetEncoding("iso-8859-1").GetString(ByteArray, 0, ByteArray.Length);
+            }
+            catch (HttpRequestException)
+            {
+                
+            }
+            catch (TaskCanceledException)
+            {
+                
             }
 
             return Output;
-
         }
 
         public static IAsyncOperation<string> Search(string SearchTerm)
@@ -167,47 +140,24 @@ namespace BackgroundTask
         {
             string Output = string.Empty;
 
-           // if (DataSemaphore.WaitOne(10000))
+            try
             {
-                try
-                {
-                    var formContent = new FormUrlEncodedContent(new[]
+                var formContent = new FormUrlEncodedContent(new[]
                     {
                         new KeyValuePair<string, string>("q", SearchTerm) 
                     });
 
-                    var myHttpClient = new HttpClient();
-                    var response = await myHttpClient.PostAsync("http://waldnet.nl/zoeken.php", formContent);
+                var myHttpClient = new HttpClient();
+                var response = await myHttpClient.PostAsync("http://waldnet.nl/zoeken.php", formContent);
 
-                    var ByteArray = await response.Content.ReadAsByteArrayAsync();
-                    Output = Encoding.GetEncoding("iso-8859-1").GetString(ByteArray, 0, ByteArray.Length);
-                }
-                catch (HttpRequestException)
-                {
-                    //ErrorDialog.ShowError("Geen verbinding", "Geen verbinding naar de server. Controleer uw internet verbinding.");
-                }
-                catch (TaskCanceledException)
-                {
-                    // ErrorDialog.ShowError("Geen verbinding", "Geen verbinding naar de server. Controleer uw internet verbinding.");
-                }
-                //catch (Exception e)
-                //{
-                //   // ErrorDialog.ShowError("OOOps..", "Er gaat iets mis.");
-
-                //   // if (SendExceptions)
-                //    {
-                //    //    new AppException(0, e);
-                //    }
-                //}
-
-
+                var ByteArray = await response.Content.ReadAsByteArrayAsync();
+                Output = Encoding.GetEncoding("iso-8859-1").GetString(ByteArray, 0, ByteArray.Length);
             }
-
-            try
+            catch (HttpRequestException)
             {
-             //   DataSemaphore.Release();
+
             }
-            catch
+            catch (TaskCanceledException)
             {
 
             }

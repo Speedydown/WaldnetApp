@@ -108,7 +108,6 @@
     <Compile Include="ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotificationHandler.cs" />
     <Compile Include="PivotPage.xaml.cs">
       <DependentUpon>PivotPage.xaml</DependentUpon>
     </Compile>
@@ -159,6 +158,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Speedydown.nl-API\WRCHelperLibrary\WRCHelperLibrary.csproj">
+      <Project>{6f1a5ac4-c4ad-49c8-b37b-c541e09d5742}</Project>
+      <Name>WRCHelperLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BackgroundTask\BackgroundTask.csproj">
       <Project>{8bcc0fda-4495-42b0-878a-359c27ea4d24}</Project>
       <Name>BackgroundTask</Name>

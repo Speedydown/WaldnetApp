@@ -5,6 +5,8 @@
 
 [Files]
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\split.pri"			"resources.pri"
+"C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\WRCHelperLibrary.winmd"			"WRCHelperLibrary.winmd"
+"C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\WebCrawlerTools.dll"			"WebCrawlerTools.dll"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Waldnet.xr.xml"			"Waldnet.xr.xml"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Waldnet.exe"			"Waldnet.exe"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Settings.xbf"			"Settings.xbf"

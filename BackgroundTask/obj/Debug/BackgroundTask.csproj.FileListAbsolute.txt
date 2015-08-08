@@ -16,3 +16,7 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\pri.resfiles
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\qualifiers.txt
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WebCrawlerTools.dll
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WebCrawlerTools.pdb
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WebCrawlerTools.pri
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\BackgroundTask.csprojResolveAssemblyReference.cache

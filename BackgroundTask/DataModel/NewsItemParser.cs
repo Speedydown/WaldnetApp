@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using WebCrawlerTools;
 using Windows.Storage;
 
 namespace BackgroundTask
@@ -71,8 +72,6 @@ namespace BackgroundTask
                 }
 
                 NI = new NewsItem(DataName, Datum, Header, Content, NewsImages, Reactions);
-
-
             }
             catch
             {
@@ -84,30 +83,12 @@ namespace BackgroundTask
 
         public static string GetContentSubstring(string Input)
         {
-            int StartPos = Input.IndexOf("<div class=artikel>");
-
-            if (StartPos == -1)
-            {
-                throw new Exception("No Content div");
-            }
-
-            return Input.Substring(StartPos);
+            return Input.Substring(HTMLParserUtil.GetPositionOfStringInHTMLSource("<div class=artikel>", Input, true));
         }
 
         private static string GetDataName(string Input)
         {
-            int StartPos = Input.IndexOf("<div class=datanaam>");
-
-            if (StartPos == -1)
-            {
-                throw new Exception("No Datanaam div");
-            }
-
-
-            string SubbedInput = Input.Substring(StartPos);
-            int Endpos = SubbedInput.IndexOf("&nbsp;</div>");
-
-            return SubbedInput.Substring("<div class=datanaam>".Length, Endpos - "<div class=datanaam>".Length);
+            return HTMLParserUtil.GetContentAndSubstringInput("<div class=datanaam>", "&nbsp;</div>", Input, out Input);
         }
 
         private static string GetDatum(string Input)
@@ -441,7 +422,7 @@ namespace BackgroundTask
 
                 Date = Date.Replace("&nbsp;<br>", "\n");
 
-                int StartOFReaction = Input.IndexOf("width: 474px\">");
+                int StartOFReaction = Input.IndexOf("97%\">");
                 int EndOFReaction = Input.IndexOf("<p>");
 
                 if (StartOFReaction == -1 || EndOFReaction == -1)
@@ -449,7 +430,7 @@ namespace BackgroundTask
                     break;
                 }
 
-                StartOFReaction += "width: 474px\">".Length;
+                StartOFReaction += "97%\">".Length;
                 string Reaction = Input.Substring(StartOFReaction, EndOFReaction - StartOFReaction);
 
                 
@@ -475,8 +456,6 @@ namespace BackgroundTask
 
                 Input = Input.Substring(EndOFReaction + "<p>".Length);
             }
-
-
 
             return ReactionList;
         }

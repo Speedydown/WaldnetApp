@@ -3,59 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebCrawlerTools;
 
 namespace BackgroundTask
 {
     internal static class PageParser
     {
-        public static List<NewsDay> ParseRegionalNews(string Input)
+        public static List<NewsDay> ParseRegionalNews(string Source)
         {
-            string Name = string.Empty;
             List<NewsDay> NewsDays = new List<NewsDay>();
 
-            Input = FindStartOfNews(Input);
+            Source = FindStartOfNews(Source);
 
-            while (Input.Length > 0)
+            while (Source.Length > 0)
             {
-                int StartIndexOFURL = Input.IndexOf("<br><b>");
-
-                if (StartIndexOFURL == -1)
+                try
+                {
+                    //Generate Newsheader with dayname first, then parse articles
+                    string Name = HTMLParserUtil.GetContentAndSubstringInput("<br><b>", "</b><br><br>", Source, out Source);
+                    NewsDays.Add(new NewsDay(Name, ParseDay(Source)));
+                }
+                catch
                 {
                     break;
                 }
-
-                StartIndexOFURL = StartIndexOFURL + "<br><b>".Length;
-
-                int IndexOfEndOfName = Input.IndexOf("</b><br><br>");
-
-                if (IndexOfEndOfName == -1)
-                {
-                    break;
-                }
-
-                Name = Input.Substring(StartIndexOFURL, IndexOfEndOfName - StartIndexOFURL);
-                Input = Input.Substring(Input.IndexOf("</b><br><br>") + "</b><br><br>".Length);
-
-                NewsDays.Add(new NewsDay(Name, ParseDay(Input)));
             }
-
 
             return NewsDays;
         }
 
         private static string FindStartOfNews(string Input)
         {
-            int IndexOfStartYnhald = Input.IndexOf("<div class=ynhald>");
-            int IndexOfStartContent = Input.IndexOf("<div class=content>");
+            int IndexOfStartYnhald = HTMLParserUtil.GetPositionOfStringInHTMLSource("<div class=ynhald>", Input, true);
+            int IndexOfStartContent = HTMLParserUtil.GetPositionOfStringInHTMLSource("<div class=content>", Input, true);
 
-            if (IndexOfStartYnhald == -1 && IndexOfStartContent == -1)
-            {
-                throw new Exception();
-            }
-
-            int IndexOfStart = (IndexOfStartYnhald != -1 && IndexOfStartYnhald < IndexOfStartContent) ? IndexOfStartYnhald : IndexOfStartContent;
-
-            return Input.Substring(IndexOfStart + "<div class=ynhald>".Length);
+            return Input.Substring((IndexOfStartYnhald != -1 && IndexOfStartYnhald < IndexOfStartContent) ? IndexOfStartYnhald : IndexOfStartContent);
         }
 
         private static List<NewsLink> ParseDay(string Input)
@@ -65,32 +47,28 @@ namespace BackgroundTask
             while (Input.Length > 0)
             {
                 int StartIndexOFURL = Input.IndexOf("<a href=\"/wn/nieuws");
-
                 int StopAtNewDate = Input.IndexOf("<br><b>");
 
+                //Stops if new day marker is found before a new newsitem
                 if (StartIndexOFURL == -1 || StartIndexOFURL > StopAtNewDate)
                 {
                     break;
                 }
 
                 Input = Input.Substring(StartIndexOFURL);
-
                 StartIndexOFURL = 0;
 
                 int EndIndexOFURL = Input.IndexOf("</a>");
 
-                if (StartIndexOFURL == -1 || EndIndexOFURL == -1)
+                if (EndIndexOFURL == -1)
                 {
                     break;
                 }
 
                 try
                 {
-
                     StartIndexOFURL += "<a href=\"".Length;
-
                     string Content = Input.Substring(StartIndexOFURL, EndIndexOFURL - StartIndexOFURL);
-
 
                     Input = Input.Substring(EndIndexOFURL + "</a>".Length);
                     string[] ContentArray = Content.Split('>');
@@ -111,7 +89,6 @@ namespace BackgroundTask
             return NewsItems;
         }
 
-
         public static List<NewsLink> ParseBusinessNews(string Input)
         {
             List<NewsLink> NewsLinks = new List<NewsLink>();
@@ -120,22 +97,16 @@ namespace BackgroundTask
 
             while (Input.Length > 0)
             {
-                int StartIndexOFURL = Input.IndexOf("/wn/nieuws/");
+                string HREF = string.Empty;
 
-                if (StartIndexOFURL == -1)
+                try
+                {
+                    HREF = HTMLParserUtil.GetContentAndSubstringInput("/wn/nieuws/", "</a><br>", Input, out Input);
+                }
+                catch
                 {
                     break;
                 }
-
-                int IndexOfEndOfName = Input.IndexOf("</a><br>");
-
-                if (IndexOfEndOfName == -1)
-                {
-                    break;
-                }
-
-                string HREF = Input.Substring(StartIndexOFURL, IndexOfEndOfName - StartIndexOFURL);
-                Input = Input.Substring(Input.IndexOf("</a><br>") + "</a><br>".Length);
 
                 string[] ContentArray = HREF.Split('>');
 

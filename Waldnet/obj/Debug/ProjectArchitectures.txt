@@ -1,2 +1,4 @@
+C:\Users\Teake\Documents\GitHub\Speedydown.nl-API\WebCrawlerTools\WebCrawlerTools.csproj;neutral
+C:\Users\Teake\Documents\GitHub\Speedydown.nl-API\WRCHelperLibrary\WRCHelperLibrary.csproj;neutral
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\BackgroundTask.csproj;neutral
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\Waldnet.csproj;neutral
