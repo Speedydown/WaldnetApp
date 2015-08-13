@@ -20,3 +20,6 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WebCrawlerTo
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WebCrawlerTools.pdb
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WebCrawlerTools.pri
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\BackgroundTask.csprojResolveAssemblyReference.cache
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WRCHelperLibrary.winmd
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WRCHelperLibrary.pdb
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WRCHelperLibrary.pri

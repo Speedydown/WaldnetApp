@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WRCHelperLibrary;
 
 namespace BackgroundTask
 {
-    public sealed class NewsLink
+    public sealed class NewsLink : INewsLink
     {
         public string URL { get; private set; }
         public string Name { get; private set; }
@@ -27,6 +28,32 @@ namespace BackgroundTask
         public void SetImage(string Image)
         {
             this.Image = Image;
+        }
+
+
+        public string ImageURL
+        {
+            get { return Image; }
+        }
+
+        public string Title
+        {
+            get { return Name; }
+        }
+
+        public string Content
+        {
+            get { return string.Empty; }
+        }
+
+        public string CommentCount
+        {
+            get { return string.Empty; }
+        }
+
+        public string Time
+        {
+            get { return string.Empty; }
         }
     }
 }
