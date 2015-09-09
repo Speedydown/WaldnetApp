@@ -11,6 +11,7 @@
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Waldnet.exe"			"Waldnet.exe"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Settings.xbf"			"Settings.xbf"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\PivotPage.xbf"			"PivotPage.xbf"
+"C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\Newtonsoft.Json.dll"			"Newtonsoft.Json.dll"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\ItemPage.xbf"			"ItemPage.xbf"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\BackgroundTask.winmd"			"BackgroundTask.winmd"
 "C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Release\PackageLayout\App.xbf"			"App.xbf"

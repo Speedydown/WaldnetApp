@@ -20,3 +20,8 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WebCrawler
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WebCrawlerTools.pdb
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WebCrawlerTools.pri
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Release\BackgroundTask.csprojResolveAssemblyReference.cache
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WRCHelperLibrary.winmd
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\Newtonsoft.Json.dll
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WRCHelperLibrary.pdb
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WRCHelperLibrary.pri
+C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\Newtonsoft.Json.xml

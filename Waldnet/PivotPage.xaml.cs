@@ -102,7 +102,7 @@ namespace Waldnet
 
                     if (LastLoadedDT == null)
                     {
-                        NotificationHandler.Run("BackgroundTask.BackgroundTask", "WâldnetTileUpdateService");
+                        NotificationHandler.Run("BackgroundTask.BackgroundTask", "WâldnetTileUpdateService", 30);
                     }
 
                     ApplicationData applicationData = ApplicationData.Current;

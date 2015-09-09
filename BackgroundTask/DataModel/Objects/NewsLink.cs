@@ -20,7 +20,15 @@ namespace BackgroundTask
                 Image = "Assets/NewsLogo.png";
             }
 
-            this.URL = "http://waldnet.nl" + URL;
+            if (URL.StartsWith("/"))
+            {
+                this.URL = "http://waldnet.nl" + URL;
+            }
+            else
+            {
+                this.URL = "http://waldnet.nl/wn/nieuws/" + URL;
+            }
+
             this.Name = Name;
             this.Image = Image;
         }

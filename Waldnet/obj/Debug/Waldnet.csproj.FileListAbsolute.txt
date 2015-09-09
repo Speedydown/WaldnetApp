@@ -51,3 +51,5 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\obj\Debug\Waldnet.csproj.Gene
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\WRCHelperLibrary.winmd
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\WRCHelperLibrary.pdb
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\WRCHelperLibrary.pri
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Debug\Newtonsoft.Json.xml

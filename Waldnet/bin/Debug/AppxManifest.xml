@@ -48,6 +48,7 @@
       <InProcessServer>
         <Path>CLRHost.dll</Path>
         <ActivatableClass ActivatableClassId="BackgroundTask.BackgroundTask" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WRCHelperLibrary.Settings.SettingsContainer" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>
