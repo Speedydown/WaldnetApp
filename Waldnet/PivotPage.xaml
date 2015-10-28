@@ -33,7 +33,7 @@
                 Margin="0,5,0,0"               
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
                 <PivotItem.Header>
-                    <TextBlock Text="Regionaal" Foreground="#FF07519A" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Regionaal" FontSize="25" Foreground="#FF07519A" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
 
                 <ListView
@@ -41,7 +41,7 @@
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.HeaderTemplate>
                         <DataTemplate>
-                            <Rectangle x:Name="fill" Height="15" Margin="0,0,0,8" Fill="#FF0061B0"/>
+                            <Rectangle x:Name="fill" Height="15" Margin="-8,0,0,8" Fill="#FF0061B0"/>
                         </DataTemplate>
                     </ListView.HeaderTemplate>
                     <ListView.ItemTemplate>
@@ -112,7 +112,7 @@
                 Margin="0,5,0,0"
                 >
                 <PivotItem.Header>
-                    <TextBlock Text="Overige" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Overige"  FontSize="25" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
                 <ListView
                     x:Name="OndernemendNieuwsList"
@@ -191,7 +191,7 @@
                 Margin="0,5,0,0"
                 >
                 <PivotItem.Header>
-                    <TextBlock Text="Archief" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Archief"  FontSize="25" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -199,7 +199,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Rectangle x:Name="fill" Grid.Row="0" Height="15" Fill="#FF0061B0"/>
+                    <Rectangle x:Name="fill" Grid.Row="0" Height="15" Margin="0,0,0 0" Fill="#FF0061B0"/>
                     <TextBox x:Name="SearchTextbox" IsEnabled="True" IsReadOnly="False" Grid.Row="1" Margin="2,2" PlaceholderText="Vul hier uw zoekterm in" KeyDown="SearchTextbox_KeyDown"/>
                     <ListView
                     x:Name="SearchResultList"

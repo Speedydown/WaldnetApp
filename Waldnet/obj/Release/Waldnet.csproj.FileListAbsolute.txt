@@ -52,4 +52,3 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WRCHelperLibrary.
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WRCHelperLibrary.pdb
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\WRCHelperLibrary.pri
 C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Newtonsoft.Json.dll
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\Release\Newtonsoft.Json.xml

@@ -24,4 +24,3 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WRCHelperL
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\Newtonsoft.Json.dll
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WRCHelperLibrary.pdb
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\WRCHelperLibrary.pri
-C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Release\Newtonsoft.Json.xml

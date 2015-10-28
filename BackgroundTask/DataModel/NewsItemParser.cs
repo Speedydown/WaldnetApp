@@ -66,7 +66,7 @@ namespace BackgroundTask
                     Reactions = await GetReactionsFromURL(ReactionsURL);
                 }
 
-                for(int i = 0; i < Content.Count; i++)
+                for (int i = 0; i < Content.Count; i++)
                 {
                     Content[i] = URLParser(Content[i]);
                 }
@@ -241,35 +241,55 @@ namespace BackgroundTask
 
         private static string GetImageURL(string Input)
         {
-            int IndexOfImage = Input.IndexOf("/wn/fotonieuws/");
-            int ENdIndexOfimage = Input.IndexOf("\"><img");
+            try
+            {
+                Input = Input.Substring(Input.IndexOf("<div class=haadtitel>FOTONIEUWS</div>"));
 
-            if (IndexOfImage == -1 || ENdIndexOfimage == -1)
+
+                int IndexOfImage = Input.IndexOf("<a href=\"") + 10;
+                int ENdIndexOfimage = Input.IndexOf("\"><img");
+
+                if (IndexOfImage == -1 || ENdIndexOfimage == -1)
+                {
+                    return string.Empty;
+                }
+
+                return "http://www.waldnet.nl/" + Input.Substring(IndexOfImage, ENdIndexOfimage - IndexOfImage);
+            }
+            catch
             {
                 return string.Empty;
             }
-
-            return "http://www.waldnet.nl" + Input.Substring(IndexOfImage, ENdIndexOfimage - IndexOfImage);
         }
 
         private static string GetImageFromArticle(string Input)
         {
-            int IndexOfImage = Input.IndexOf("http://media.waldnet.nl");
-            int ENdIndexOfimage = Input.IndexOf("\" width");
+            try
+            {
+                Input = Input.Substring(Input.IndexOf("<img class=nijsfoto"));
 
-            if (IndexOfImage == -1 || ENdIndexOfimage == -1)
+
+                int IndexOfImage = Input.IndexOf("src=\"");
+                int ENdIndexOfimage = Input.IndexOf("\" width=");
+
+                if (IndexOfImage == -1 || ENdIndexOfimage == -1)
+                {
+                    return string.Empty;
+                }
+
+                return Input.Substring(IndexOfImage + 5, ENdIndexOfimage - IndexOfImage - 5);
+            }
+            catch
             {
                 return string.Empty;
             }
-
-            return Input.Substring(IndexOfImage, ENdIndexOfimage - IndexOfImage);
         }
 
         private static string GetImageFromArticle(List<string> Paragraphs)
         {
             string ImageUrl = string.Empty;
 
-            for(int i = 0; i < Paragraphs.Count; i++)
+            for (int i = 0; i < Paragraphs.Count; i++)
             {
                 int IndexOfImage = Paragraphs[i].IndexOf("http://media.waldnet.nl/");
 
@@ -433,7 +453,7 @@ namespace BackgroundTask
                 StartOFReaction += "97%\">".Length;
                 string Reaction = Input.Substring(StartOFReaction, EndOFReaction - StartOFReaction);
 
-                
+
                 Reaction = Reaction.Replace("<br />", "");
 
                 try
@@ -500,6 +520,6 @@ namespace BackgroundTask
             return URLParser(Start + Content + End);
         }
 
-        
+
     }
 }

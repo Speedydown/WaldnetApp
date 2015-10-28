@@ -160,8 +160,8 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Height" />
-      <RootProperty Name="Fill" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Fill" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">

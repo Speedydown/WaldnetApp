@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using BackgroundTask;
 using WRCHelperLibrary;
+using Windows.UI.ViewManagement;
 
 namespace Waldnet
 {
@@ -40,7 +41,7 @@ namespace Waldnet
         {
             Instance = this;
             this.InitializeComponent();
-
+            StatusBar.GetForCurrentView().ForegroundColor = Color.FromArgb(255, 7, 81, 154);
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             this.navigationHelper = new NavigationHelper(this);

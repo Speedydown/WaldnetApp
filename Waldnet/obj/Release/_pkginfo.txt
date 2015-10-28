@@ -1,1 +1,1 @@
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\AppPackages\Waldnet_2015.909.2215.0_Test\Waldnet_2015.909.2215.0_AnyCPU.appxbundle
+C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\AppPackages\Waldnet_2015.1028.2107.0_Test\Waldnet_2015.1028.2107.0_AnyCPU.appxbundle
