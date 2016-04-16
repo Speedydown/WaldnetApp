@@ -79,34 +79,46 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\..\Speedydown.nl-API\WebCrawlerTools\WebCrawlerTools.csproj">
-      <Project>{ef41c761-8924-40f6-bc70-af1064796ed2}</Project>
-      <Name>WebCrawlerTools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Speedydown.nl-API\WRCHelperLibrary\WRCHelperLibrary.csproj">
-      <Project>{6f1a5ac4-c4ad-49c8-b37b-c541e09d5742}</Project>
-      <Name>WRCHelperLibrary</Name>
-    </ProjectReference>
+    <Compile Include="BackgroundTask.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackgroundTask.cs" />
-    <Compile Include="DataModel\DataHandler.cs" />
-    <Compile Include="DataModel\Objects\NewsDay.cs" />
-    <Compile Include="DataModel\Objects\NewsItem.cs" />
-    <Compile Include="DataModel\NewsItemParser.cs" />
-    <Compile Include="DataModel\Objects\NewsLink.cs" />
-    <Compile Include="DataModel\PageParser.cs" />
-    <Compile Include="DataModel\Objects\Reaction.cs" />
-    <Compile Include="DataModel\Objects\SearchResult.cs" />
-    <Compile Include="DataModel\SearchResultParser.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\..\win10apps.nl\BaseLogic\BaseLogic.csproj">
+      <Project>{ee050c83-148e-4402-b25c-bc667d855965}</Project>
+      <Name>BaseLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WaldnetLogic\WaldnetLogic.csproj">
+      <Project>{635cbfb1-5080-4230-8b80-712acc9397fb}</Project>
+      <Name>WaldnetLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

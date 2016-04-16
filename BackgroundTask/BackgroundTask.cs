@@ -1,13 +1,15 @@
-﻿using System;
+﻿using BaseLogic.Notifications;
+using BaseLogic.Xaml_Controls.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WaldnetLogic;
 using Windows.ApplicationModel.Background;
 using Windows.Data.Xml.Dom;
 using Windows.Storage;
 using Windows.UI.Notifications;
-using WRCHelperLibrary;
 
 namespace BackgroundTask
 {

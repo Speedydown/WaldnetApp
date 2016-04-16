@@ -24,8 +24,9 @@ using Windows.UI.Notifications;
 using System.Threading.Tasks;
 using Windows.Storage;
 using BackgroundTask;
-using WRCHelperLibrary;
 using Windows.UI.ViewManagement;
+using WaldnetLogic;
+using BaseLogic.Notifications;
 
 namespace Waldnet
 {
@@ -63,6 +64,7 @@ namespace Waldnet
 
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            await StatusBar.GetForCurrentView().HideAsync();
             await HandleWaldnetData();
         }
 

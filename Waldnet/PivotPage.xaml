@@ -20,7 +20,7 @@
 
     <Grid Background="White">
         <ProgressBar x:Name="DataProgressBar" IsIndeterminate="True" VerticalAlignment="Top"/>
-        <Grid x:Name="NoInternetGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+        <Grid x:Name="NoInternetGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Canvas.ZIndex="100">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -28,12 +28,12 @@
             <TextBlock Grid.Row="0" Text="Wâldnet is op dit moment helaas niet beschikbaar :(" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="35" TextAlignment="Center" />
             <TextBlock Grid.Row="1" Text="Opnieuw proberen? Klik dan op vernieuwen" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="15" TextAlignment="Center" Margin="0, 25" />
         </Grid>
-        <Pivot x:Uid="Pivot" x:Name="pivotControl" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A" SelectionChanged="pivot_SelectionChanged">
+        <Pivot x:Uid="Pivot" Margin="0,-27,0,0" x:Name="pivotControl" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A" SelectionChanged="pivot_SelectionChanged">
             <PivotItem
                 Margin="0,5,0,0"               
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
                 <PivotItem.Header>
-                    <TextBlock Text="Regionaal" FontSize="25" Foreground="#FF07519A" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Regionaal" FontSize="25" Margin="0,4,0,0" Foreground="#FF07519A" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
 
                 <ListView
@@ -112,7 +112,7 @@
                 Margin="0,5,0,0"
                 >
                 <PivotItem.Header>
-                    <TextBlock Text="Overige"  FontSize="25" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Overige"  FontSize="25" Margin="0,4,0,0" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
                 <ListView
                     x:Name="OndernemendNieuwsList"
@@ -168,7 +168,6 @@
                                             <Setter Property="BorderThickness" Value="0"/>
                                             <Setter Property="Margin" Value="0"/>
                                             <Setter Property="Padding" Value="0"/>
-                                            <!--<Setter Property="Height" Value="Auto"/>-->
                                         </Style>
                                     </ListView.ItemContainerStyle>
                                 </ListView>
@@ -191,7 +190,7 @@
                 Margin="0,5,0,0"
                 >
                 <PivotItem.Header>
-                    <TextBlock Text="Archief"  FontSize="25" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Archief"  FontSize="25" Margin="0,4,0,0" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -299,7 +298,7 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar Background="#FFDCE7F3" Foreground="#FF07519A">
+        <CommandBar Background="#FFDCE7F3" Foreground="#FF07519A" ClosedDisplayMode="Minimal">
             <AppBarButton x:Uid="WaldnetButton" x:Name="WaldnetButton" Label="Wâldnet" Icon="World" Click="WaldnetButton_Click" />
             <AppBarButton x:Uid="WaldNetSearchButton" x:Name="WaldNetSearchButton" Label="Zoeken" Icon="Find" Visibility="Collapsed" Click="WaldNetSearchButton_Click"/>
             <AppBarButton x:Uid="RefreshButton" x:Name="RefreshButton" Label="Vernieuwen" Icon="Refresh" Click="RefreshButton_Click" />

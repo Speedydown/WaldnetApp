@@ -21,6 +21,9 @@ using Windows.Phone.UI.Input;
 using BackgroundTask;
 using System.Threading.Tasks;
 using Windows.Storage;
+using WaldnetLogic;
+using BaseLogic.ClientIDHandler;
+using BaseLogic.ArticleCounter;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -105,20 +108,13 @@ namespace Waldnet
             NewsItem NI = await DataHandler.GetNewsItemFromURL(URL);
 
             LayoutRoot.DataContext = NI;
-            ArticleCounter.AddArticleCount();
+            
+            await ArticleCounter.AddArticleCount("Wij bieden Wâldnet kostenloos aan en we zouden het op prijs stellen als u de Wâldnet app een positieve review geeft.", "Bedankt");
             DataProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
-            Task t = Task.Run(() => DataHandler.GetDataFromURL("http://speedydown-001-site2.smarterasp.net/api.ashx?Article=" + NI.Header));
+            Task t = Task.Run(() => ClientIDHandler.instance.PostAppStats(ClientIDHandler.AppName.Wâldnet));
         }
 
-        /// <summary>
-        /// Preserves state associated with this page in case the application is suspended or the
-        /// page is discarded from the navigation cache.  Values must conform to the serialization
-        /// requirements of <see cref="SuspensionManager.SessionState"/>.
-        /// </summary>
-        /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/>.</param>
-        /// <param name="e">Event data that provides an empty dictionary to be populated with
-        /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
             // TODO: Save the unique state of the page here.
