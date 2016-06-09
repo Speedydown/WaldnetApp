@@ -24,3 +24,6 @@ C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WRCHelperLib
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WRCHelperLibrary.pdb
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\WRCHelperLibrary.pri
 C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\bin\Debug\Newtonsoft.Json.dll
+C:\Users\speed\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\BackgroundTask.csprojResolveAssemblyReference.cache
+C:\Users\speed\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\BackgroundTask.winmdobj
+C:\Users\speed\Documents\GitHub\WaldnetApp\BackgroundTask\obj\Debug\BackgroundTask.compile.pdb

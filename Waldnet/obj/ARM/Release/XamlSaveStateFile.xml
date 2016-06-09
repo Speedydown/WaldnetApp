@@ -2,8 +2,8 @@
   <ReferenceAssemblyList>
     <LocalAssembly PathName="c:\users\teake\documents\github\waldnetapp\waldnet\obj\arm\release\intermediatexaml\waldnet.exe" HashGuid="fb383ab6-d5be-3345-e4ce-acad894e7f12" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windowsphoneapp\v8.1\extensionsdks\microsoft.vclibs\12.0\references\commonconfiguration\neutral\platform.winmd" HashGuid="58b6b6d1-928e-9908-9804-eb460e5e101b" />
-    <ReferenceAssembly PathName="c:\users\teake\documents\github\waldnetapp\backgroundtask\bin\arm\release\backgroundtask.winmd" HashGuid="c817c7c2-c945-ff13-0928-c3e7bed91789" />
-    <ReferenceAssembly PathName="c:\users\teake\documents\github\win10apps.nl\baselogic\bin\arm\release\baselogic.dll" HashGuid="fc03aa22-0a4a-c0cb-3424-6ae67472ae01" />
-    <ReferenceAssembly PathName="c:\users\teake\documents\github\waldnetapp\waldnetlogic\bin\arm\release\waldnetlogic.dll" HashGuid="51cf7d24-a422-191c-8e1c-152e5fcc31d8" />
+    <ReferenceAssembly PathName="c:\users\speed\documents\github\waldnetapp\backgroundtask\bin\arm\release\backgroundtask.winmd" HashGuid="c817c7c2-c945-ff13-0928-c3e7bed91789" />
+    <ReferenceAssembly PathName="c:\users\speed\documents\github\win10apps.nl\baselogic\bin\arm\release\baselogic.dll" HashGuid="1f2c916c-2895-7615-c9b5-55f72ee1156a" />
+    <ReferenceAssembly PathName="c:\users\speed\documents\github\waldnetapp\waldnetlogic\bin\arm\release\waldnetlogic.dll" HashGuid="cef028c6-7933-6723-d114-c243bf14fe71" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

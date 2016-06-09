@@ -1,7 +1,7 @@
-C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\BackgroundTask.csproj;arm
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\Waldnet.csproj;arm
-C:\Users\Teake\Documents\GitHub\WaldnetApp\WaldnetLogic\WaldnetLogic.csproj;arm
-C:\Users\Teake\Documents\GitHub\WaldnetApp\WaldnetLogic\WaldnetLogic.csproj;arm
-C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;arm
-C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;arm
-C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;arm
+C:\Users\speed\Documents\GitHub\WaldnetApp\BackgroundTask\BackgroundTask.csproj;arm
+C:\Users\speed\Documents\GitHub\WaldnetApp\Waldnet\Waldnet.csproj;arm
+C:\Users\speed\Documents\GitHub\WaldnetApp\WaldnetLogic\WaldnetLogic.csproj;arm
+C:\Users\speed\Documents\GitHub\WaldnetApp\WaldnetLogic\WaldnetLogic.csproj;arm
+C:\Users\speed\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;arm
+C:\Users\speed\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;arm
+C:\Users\speed\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;arm

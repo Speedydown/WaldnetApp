@@ -1,7 +1,7 @@
-C:\Users\Teake\Documents\GitHub\WaldnetApp\BackgroundTask\BackgroundTask.csproj;x86
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\Waldnet.csproj;x86
-C:\Users\Teake\Documents\GitHub\WaldnetApp\WaldnetLogic\WaldnetLogic.csproj;x86
-C:\Users\Teake\Documents\GitHub\WaldnetApp\WaldnetLogic\WaldnetLogic.csproj;x86
-C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;x86
-C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;x86
-C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;x86
+C:\Users\speed\Documents\GitHub\WaldnetApp\BackgroundTask\BackgroundTask.csproj;x86
+C:\Users\speed\Documents\GitHub\WaldnetApp\Waldnet\Waldnet.csproj;x86
+C:\Users\speed\Documents\GitHub\WaldnetApp\WaldnetLogic\WaldnetLogic.csproj;x86
+C:\Users\speed\Documents\GitHub\WaldnetApp\WaldnetLogic\WaldnetLogic.csproj;x86
+C:\Users\speed\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;x86
+C:\Users\speed\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;x86
+C:\Users\speed\Documents\GitHub\win10apps.nl\BaseLogic\BaseLogic.csproj;x86

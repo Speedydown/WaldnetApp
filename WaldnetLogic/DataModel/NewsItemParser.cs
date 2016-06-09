@@ -154,7 +154,11 @@ namespace WaldnetLogic
                 if (Paragraph != string.Empty)
                 {
                     Paragraph = CleanParagraph(Paragraph);
-                    Paragraphs.Add(Paragraph);
+
+                    if (!string.IsNullOrWhiteSpace(Paragraph))
+                    {
+                        Paragraphs.Add(Paragraph);
+                    }
                 }
 
                 Input = Input.Substring(Endpos + "</p>".Length);
@@ -323,15 +327,15 @@ namespace WaldnetLogic
 
             string Input = await DataHandler.GetDataFromURL(URL);
 
-            int StartIndex = Input.IndexOf("<table border=0 cellspacing=0 cellpadding=0>");
-            int EndIndex = Input.IndexOf("</TABLE>");
+            int StartIndex = Input.IndexOf("<table cellspacing=0 cellpadding=0 border=0><tr><td>");
 
-            if (StartIndex == -1 || EndIndex == -1)
+            if (StartIndex == -1)
             {
                 return ImagesList;
             }
 
-            Input = Input.Substring(StartIndex, EndIndex - StartIndex);
+            Input = Input.Substring(StartIndex);
+            Input = Input.Substring(0, Input.ToLower().IndexOf("</div>"));
 
             while (Input.Length > 0)
             {
