@@ -442,15 +442,15 @@ namespace WaldnetLogic
 
                 Date = Date.Replace("&nbsp;<br>", "\n");
 
-                int StartOFReaction = Input.IndexOf("97%\">");
-                int EndOFReaction = Input.IndexOf("<p>");
+                int StartOFReaction = Input.IndexOf("break-word;\">");
+                int EndOFReaction = Input.IndexOf("<p> <span");
 
                 if (StartOFReaction == -1 || EndOFReaction == -1)
                 {
                     break;
                 }
 
-                StartOFReaction += "97%\">".Length;
+                StartOFReaction += "break-word;\">".Length;
                 string Reaction = Input.Substring(StartOFReaction, EndOFReaction - StartOFReaction);
 
 

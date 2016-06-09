@@ -2,5 +2,6 @@
   <ReferenceAssemblyList>
     <LocalAssembly PathName="c:\users\teake\documents\github\waldnetapp\waldnet\obj\debug\intermediatexaml\waldnet.exe" HashGuid="8f45db01-2a50-85ff-8c20-e6540c09bfae" />
     <ReferenceAssembly PathName="c:\users\teake\documents\github\waldnetapp\backgroundtask\bin\debug\backgroundtask.winmd" HashGuid="4d74f363-430c-f8fc-3098-65ef19a24f27" />
+    <ReferenceAssembly PathName="c:\users\teake\documents\github\win10apps.nl\baselogic\bin\debug\baselogic.dll" HashGuid="0bc6b047-bcf8-66af-cdb3-c89f37118a5d" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

@@ -4,6 +4,8 @@
     <Machine>SPEEDYTOPV2</Machine>
     <WindowsUser>Teake</WindowsUser>
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows Phone 8.1</TargetOsDescription>
     <SolutionConfiguration>Release|ARM</SolutionConfiguration>
     <PackageArchitecture>arm</PackageArchitecture>
     <PackageIdentityName>6205fc61-d473-48e1-bbb9-a5483a6ebb6a</PackageIdentityName>
@@ -145,6 +147,12 @@
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\Common\ReadMe.txt">
       <PackagePath>Common\ReadMe.txt</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\Waldnet.xr.xml">
+      <PackagePath>Waldnet.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\bin\ARM\Release\BaseLogic.xr.xml">
+      <PackagePath>BaseLogic\BaseLogic.xr.xml</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
@@ -168,12 +176,6 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\bin\ARM\Release\Xaml Controls\SettingsControl.xbf">
       <PackagePath>BaseLogic\Xaml Controls\SettingsControl.xbf</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\Waldnet.xr.xml">
-      <PackagePath>Waldnet.xr.xml</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\bin\ARM\Release\BaseLogic.xr.xml">
-      <PackagePath>BaseLogic\BaseLogic.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
