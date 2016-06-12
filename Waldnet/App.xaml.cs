@@ -36,7 +36,7 @@ namespace Waldnet
         void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             e.Handled = true;
-            Task t = ExceptionHandler.instance.PostException(new AppException(e.Exception), (int)BaseLogic.ClientIDHandler.ClientIDHandler.AppName.Wâldnet);
+            Task t = ExceptionHandler.instance.PostException(new AppException(e.Exception, (int)BaseLogic.ClientIDHandler.ClientIDHandler.AppName.Wâldnet));
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)

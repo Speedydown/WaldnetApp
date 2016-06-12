@@ -25,37 +25,32 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Wâldnet is op dit moment helaas niet beschikbaar :(" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="35" TextAlignment="Center" />
-            <TextBlock Grid.Row="1" Text="Opnieuw proberen? Klik dan op vernieuwen" TextWrapping="WrapWholeWords" Foreground="#FF07519A" FontSize="15" TextAlignment="Center" Margin="0, 25" />
+            <TextBlock Grid.Row="0" Text="Wâldnet is op dit moment helaas niet beschikbaar :(" TextWrapping="WrapWholeWords" Foreground="#0061b0" FontSize="35" TextAlignment="Center" />
+            <TextBlock Grid.Row="1" Text="Opnieuw proberen? Klik dan op vernieuwen" TextWrapping="WrapWholeWords" Foreground="#0061b0" FontSize="15" TextAlignment="Center" Margin="0, 25" />
         </Grid>
-        <Pivot x:ConnectionId='1' x:Uid="Pivot" Margin="0,-27,0,0" x:Name="pivotControl" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#FF07519A"                                          >
+        <Pivot x:ConnectionId='1' x:Uid="Pivot" Margin="0,-27,0,0" x:Name="pivotControl" CommonNavigationTransitionInfo.IsStaggerElement="True" Foreground="#0061b0"                                          >
             <PivotItem
                 Margin="0,5,0,0"               
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
                 <PivotItem.Header>
-                    <TextBlock Text="Regionaal" FontSize="25" Margin="0,4,0,0" Foreground="#FF07519A" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Regionaal" FontSize="25" Margin="0,4,0,0" Foreground="#0061b0" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
 
                 <ListView
                     x:Name="RegionalNews"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
-                    <ListView.HeaderTemplate>
-                        <DataTemplate>
-                            <Rectangle x:Name="fill" Height="15" Margin="-8,0,0,8" Fill="#FF0061B0"/>
-                        </DataTemplate>
-                    </ListView.HeaderTemplate>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel HorizontalAlignment="Stretch" Grid.Column="0" >
-                                <Grid Background="#FFDCE7F3">
+                                <Grid Background="#0061b0">
                                     <TextBlock
-                                        Margin="9,0,19,0"
+                                        Margin="17,0,19,0"
                                     Text="{Binding DayName}"
                                     TextWrapping="Wrap"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     FontSize="25"
-                                    Foreground="#FF07519A" FontWeight="Bold"/>
+                                    Foreground="White" FontWeight="Bold"/>
                                 </Grid>
                                 <ListView x:ConnectionId='5'
                                     Margin="0,0,0,5"
@@ -74,13 +69,11 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Image Source="{Binding Image}" Margin="2,0,0,0" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Height="30" Width="30"/>
-
-
+                                               
 
                                                 <TextBlock Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Text="{Binding Name}" TextWrapping="WrapWholeWords"
                                     Pivot.SlideInAnimationGroup="1" CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Foreground="#FF07519A" FontSize="18" Margin="4,0,0,0"/>
+                                    Foreground="#FF07519A" FontSize="18" Margin="17,0,0,0"/>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -90,7 +83,6 @@
                                             <Setter Property="BorderThickness" Value="0"/>
                                             <Setter Property="Margin" Value="0"/>
                                             <Setter Property="Padding" Value="0"/>
-                                            <!--<Setter Property="Height" Value="Auto"/>-->
                                         </Style>
                                     </ListView.ItemContainerStyle>
                                 </ListView>
@@ -112,28 +104,23 @@
                 Margin="0,5,0,0"
                 >
                 <PivotItem.Header>
-                    <TextBlock Text="Overige"  FontSize="25" Margin="0,4,0,0" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Overige"  FontSize="25" Margin="0,4,0,0" Foreground="#0061b0" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
                 <ListView
                     x:Name="OndernemendNieuwsList"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
-                    <ListView.HeaderTemplate>
-                        <DataTemplate>
-                            <Rectangle x:Name="fill" Height="15" Margin="0,0,0,8" Fill="#FF0061B0"/>
-                        </DataTemplate>
-                    </ListView.HeaderTemplate>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel HorizontalAlignment="Stretch" Grid.Column="0" >
-                                <Grid Background="#FFDCE7F3">
+                                <Grid Background="#0061b0">
                                     <TextBlock
-                                        Margin="9,0,19,0"
+                                        Margin="17,0,19,0"
                                     Text="{Binding DayName}"
                                     TextWrapping="Wrap"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     FontSize="25"
-                                    Foreground="#FF07519A" FontWeight="Bold"/>
+                                    Foreground="White" FontWeight="Bold"/>
                                 </Grid>
                                 <ListView x:ConnectionId='4'
                                     Margin="0,0,0,5"
@@ -152,13 +139,10 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Image Source="{Binding Image}" Margin="2,0,0,0" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Height="30" Width="30"/>
-
-
-
+     
                                                 <TextBlock Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Text="{Binding Name}" TextWrapping="WrapWholeWords"
                                     Pivot.SlideInAnimationGroup="1" CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Foreground="#FF07519A" FontSize="18" Margin="4,0,0,0"/>
+                                    Foreground="#FF07519A" FontSize="18" Margin="17,0"/>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -190,7 +174,7 @@
                 Margin="0,5,0,0"
                 >
                 <PivotItem.Header>
-                    <TextBlock Text="Archief"  FontSize="25" Margin="0,4,0,0" Foreground="#FFDCE7F3" FontWeight="ExtraBold"/>
+                    <TextBlock Text="Archief"  FontSize="25" Margin="0,4,0,0" Foreground="#0061b0" FontWeight="ExtraBold"/>
                 </PivotItem.Header>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -198,8 +182,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Rectangle x:Name="fill" Grid.Row="0" Height="15" Margin="0,0,0 0" Fill="#FF0061B0"/>
-                    <TextBox x:ConnectionId='2' x:Name="SearchTextbox" IsEnabled="True" IsReadOnly="False" Grid.Row="1" Margin="2,2" PlaceholderText="Vul hier uw zoekterm in"                                />
+                    <TextBox x:ConnectionId='2' x:Name="SearchTextbox" IsEnabled="True" IsReadOnly="False" Grid.Row="1" Margin="17,15" PlaceholderText="Vul hier uw zoekterm in"                                />
                     <ListView x:ConnectionId='3'
                     x:Name="SearchResultList"
                         Grid.Row="2"
@@ -237,37 +220,19 @@
                                     TextWrapping="NoWrap"
                                     Pivot.SlideInAnimationGroup="3"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Foreground="#FF07519A" 
+                                    Foreground="#0061b0" 
                                                 FontSize="18"
-                                    Margin="4,0,0,0"/>
+                                    Margin="17,0,0,0"/>
                                     <TextBlock
                                         Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"
                                     Text="{Binding Date}"
                                     TextWrapping="NoWrap"
                                     Pivot.SlideInAnimationGroup="3"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Foreground="#FF07519A" 
+                                    Foreground="#0061b0" 
                                                 FontSize="18"
-                                    Margin="9,0,0,0"/>
-                                    <!--<TextBlock
-                                        Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1"
-                                    Text=" - "
-                                    TextWrapping="NoWrap"
-                                    Pivot.SlideInAnimationGroup="3"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Foreground="#FF07519A" 
-                                                FontSize="18"
-                                    Margin="4,0,0,0"/>-->
-                                    <!--<TextBlock
-                                        Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1"
-                                    Text="{Binding Plaats}"
-                                    TextWrapping="NoWrap"
-                                    Pivot.SlideInAnimationGroup="3"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Foreground="#FF07519A" 
-                                                FontSize="18"
-                                    Margin="4,0,0,0"/>-->
-
+                                    Margin="9,0,17,0"/>
+          
 
                                     <TextBlock
                                         Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"
@@ -275,9 +240,9 @@
                                     TextWrapping="NoWrap"
                                     Pivot.SlideInAnimationGroup="3"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Foreground="#FF07519A" 
+                                    Foreground="#0061b0" 
                                                 FontSize="18" FontWeight="SemiBold"
-                                    Margin="4,0,0,10"/>
+                                    Margin="17,0,17,10"/>
                                 </Grid>
 
                             </DataTemplate>
@@ -298,7 +263,7 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar Background="#FFDCE7F3" Foreground="#FF07519A" ClosedDisplayMode="Minimal">
+        <CommandBar Background="#0061b0" Foreground="White" ClosedDisplayMode="Minimal">
             <AppBarButton x:ConnectionId='6' x:Uid="WaldnetButton" x:Name="WaldnetButton" Label="Wâldnet" Icon="World"                             />
             <AppBarButton x:ConnectionId='7' x:Uid="WaldNetSearchButton" x:Name="WaldNetSearchButton" Label="Zoeken" Icon="Find" Visibility="Collapsed"                                  />
             <AppBarButton x:ConnectionId='8' x:Uid="RefreshButton" x:Name="RefreshButton" Label="Vernieuwen" Icon="Refresh"                             />

@@ -30,14 +30,14 @@
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\WaldnetApp\WaldnetLogic\bin\x86\Debug\WaldnetLogic.dll">
       <PackagePath>WaldnetLogic.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\bin\x86\Debug\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\bin\x86\Debug\SQLite.Net.dll">
       <PackagePath>SQLite.Net.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\bin\x86\Debug\SQLite.Net.Platform.WinRT.dll">
       <PackagePath>SQLite.Net.Platform.WinRT.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\win10apps.nl\BaseLogic\bin\x86\Debug\Newtonsoft.Json.dll">
-      <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Teake\Documents\GitHub\Slam-Mix-Marathon\Slam Mix marathon\packages\SQLitePCL.raw_basic.0.8.6\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCL.raw.dll">
       <PackagePath>SQLitePCL.raw.dll</PackagePath>
