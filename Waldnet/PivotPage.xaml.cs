@@ -43,7 +43,7 @@ namespace Waldnet
             Instance = this;
             this.InitializeComponent();
             StatusBar.GetForCurrentView().ForegroundColor = Color.FromArgb(255, 7, 81, 154);
-            this.NavigationCacheMode = NavigationCacheMode.Required;
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
