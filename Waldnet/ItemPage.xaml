@@ -102,7 +102,7 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
                 <Grid x:Name="ReactionsHeaderGrid" Background="#FF0061B0" Grid.Row="2" MinHeight="15">
-                    <TextBlock x:Name="ReactionsHeaderContent" Text="{Binding ReactionCount}" Margin="5,2,0,2" Foreground="White" FontSize="13" TextWrapping="WrapWholeWords" />
+                    <TextBlock x:Name="ReactionsHeaderContent" Text="{Binding ReactionCount}" Margin="5,2,0,2" Foreground="White" FontSize="15" TextWrapping="WrapWholeWords" />
                 </Grid>
 
                 <ListView x:Name="ReactionsListview" Grid.Row="3"
@@ -119,26 +119,26 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <Grid Grid.Row="0" Background="#FFDCE7F3">
+                                    <Grid Grid.Row="0" Background="#0061b0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock
                                         Grid.Column="0"
-                                            Margin="5,0"
+                                            Margin="5,1"
                                     Text="{Binding Sender}"
                                     TextWrapping="WrapWholeWords"
-                                    Foreground="#FF07519A" 
+                                    Foreground="White" 
                                                 FontSize="15" FontWeight="Bold"/>
 
                                         <TextBlock
                                         Grid.Column="1"
-                                            Margin="5,0"
+                                            Margin="5,1"
                                     Text="{Binding TimePosted}"
                                     TextWrapping="WrapWholeWords"
-                                    Foreground="#FF07519A" TextAlignment="Right" 
-                                                FontSize="11" FontWeight="Bold" HorizontalAlignment="Right"/>
+                                    Foreground="White" TextAlignment="Right" 
+                                                FontSize="12" FontWeight="Bold" HorizontalAlignment="Right"/>
 
                                     </Grid>
                                     <TextBlock
@@ -174,7 +174,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Background="#FFDCE7F3">
+                        <Grid Grid.Row="0" Background="#0061b0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*"/>
@@ -184,7 +184,7 @@
                                             Margin="5,0"
                                     Text="Reageren?"
                                     TextWrapping="WrapWholeWords"
-                                    Foreground="#FF07519A" 
+                                    Foreground="White" 
                                                 FontSize="15" FontWeight="Bold"/>
                         </Grid>
                         <TextBlock
