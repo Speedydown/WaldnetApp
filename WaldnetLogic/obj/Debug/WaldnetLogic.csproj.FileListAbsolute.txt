@@ -1,2 +1,0 @@
-C:\Users\Teake\Documents\GitHub\WaldnetApp\WaldnetLogic\obj\Debug\WaldnetLogic.csprojResolveAssemblyReference.cache
-C:\Users\speed\Documents\GitHub\WaldnetApp\WaldnetLogic\obj\Debug\WaldnetLogic.csprojResolveAssemblyReference.cache

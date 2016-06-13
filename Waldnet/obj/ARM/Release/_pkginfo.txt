@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-C:\Users\speed\Documents\GitHub\WaldnetApp\Waldnet\AppPackages\Waldnet_2016.609.1854.0_Test\Waldnet_2016.609.1854.0_arm.appxbundle
-=======
-C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\AppPackages\Waldnet_2016.612.2217.0_Test\Waldnet_2016.612.2217.0_arm.appxbundle
->>>>>>> origin/master
