@@ -50,7 +50,7 @@ namespace Waldnet
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-        
+
 
         public NavigationHelper NavigationHelper
         {
@@ -89,16 +89,6 @@ namespace Waldnet
                     List<NewsDay> News = (List<NewsDay>)await DataHandler.GetRegionalNews();
                     List<NewsLink> Businessnews = (List<NewsLink>)await DataHandler.GetBusinessNews();
                     List<NewsLink> SportsNews = (List<NewsLink>)await DataHandler.GetSportssNews();
-
-                    foreach (NewsLink n in SportsNews)
-                    {
-                        n.SetImage("Assets/Sport.png");
-                    }
-
-                    foreach (NewsLink n in Businessnews)
-                    {
-                        n.SetImage("Assets/business.png");
-                    }
 
                     this.RegionalNews.ItemsSource = News;
                     this.OndernemendNieuwsList.ItemsSource = new NewsDay[] { new NewsDay("Sportnieuws", SportsNews.GetRange(0, 8)), new NewsDay("Ondernemend nieuws", Businessnews.GetRange(0, 8)) };

@@ -1,4 +1,5 @@
 ﻿using BaseLogic.HtmlUtil;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,83 @@ namespace WaldnetLogic
     {
         public static List<NewsDay> ParseRegionalNews(string Source)
         {
+            List<NewsLink> NewsLinks = new List<NewsLink>();
+
+            HtmlDocument htmlDoc = new HtmlDocument();
+            htmlDoc.OptionFixNestedTags = true;
+            htmlDoc.LoadHtml(Source);
+
+            if (htmlDoc.DocumentNode != null)
+            {
+                var HeadlineNodes = htmlDoc.DocumentNode.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("ynhald")) > 0);
+
+                foreach (HtmlNode node in HeadlineNodes)
+                {
+                    try
+                    {
+                        int OnclickIndex = node.OuterHtml.IndexOf("/wn/nieuws/");
+                        int Length = node.OuterHtml.IndexOf(".html") + ".html".Length - OnclickIndex;
+
+                        string Url = node.OuterHtml.Substring(OnclickIndex, Length);
+                        string TimeStamp = node.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("haadfak")) > 0).FirstOrDefault().Descendants("br").FirstOrDefault().PreviousSibling.InnerText;
+
+
+                        string Title = node.Descendants("h2").FirstOrDefault().InnerText;
+
+                        NewsLinks.Add(new NewsLink(Url, Title, TimeStamp.Trim()));
+                    }
+                    catch
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return OrderNewsLinks(NewsLinks);
+        }
+
+        private static List<NewsDay> OrderNewsLinks(List<NewsLink> NewsLinks)
+        {
             List<NewsDay> NewsDays = new List<NewsDay>();
 
-            Source = FindStartOfNews(Source);
-
-            while (Source.Length > 0)
+            foreach (NewsLink nl in NewsLinks)
             {
-                try
+                DateTime Date = DateTime.Now;
+
+                if (nl.TimeStamp.ToLower().Contains("uur"))
                 {
-                    //Generate Newsheader with dayname first, then parse articles
-                    string Name = HTMLParserUtil.GetContentAndSubstringInput("<br><b>", "</b><br><br>", Source, out Source);
-                    NewsDays.Add(new NewsDay(Name, ParseDay(Source)));
+                    string uurString = nl.TimeStamp.Split(' ').First();
+
+                    int uur = 0;
+                    int.TryParse(uurString, out uur);
+
+                    if (uur == 0)
+                    {
+                        continue;
+                    }
+
+                    Date = DateTime.Now.AddHours(-uur);
+
+                   
                 }
-                catch
+                else
                 {
-                    break;
+                    string daystring = nl.TimeStamp.Split(' ')[1];
+                    string MonthString = nl.TimeStamp.Split(' ')[2];
+
+                    Date = DateTime.Now;
+                    DateTime.TryParse(daystring + " " + MonthString + " " + DateTime.Now.Year, out Date);
+                }
+
+                NewsDay CurrentNewsDay = NewsDays.FirstOrDefault(nd => nd.DayName == Date.ToString("dddd dd MMMM"));
+
+                if (CurrentNewsDay == null)
+                {
+                    NewsDays.Add(new NewsDay(Date.ToString("dddd dd MMMM"), new List<NewsLink>() { nl }));
+                }
+                else
+                {
+                    CurrentNewsDay.NewsLinks.Add(nl);
                 }
             }
 
@@ -38,55 +101,6 @@ namespace WaldnetLogic
             int IndexOfStartContent = HTMLParserUtil.GetPositionOfStringInHTMLSource("<div class=content>", Input, true);
 
             return Input.Substring((IndexOfStartYnhald != -1 && IndexOfStartYnhald < IndexOfStartContent) ? IndexOfStartYnhald : IndexOfStartContent);
-        }
-
-        private static List<NewsLink> ParseDay(string Input)
-        {
-            List<NewsLink> NewsItems = new List<NewsLink>();
-
-            while (Input.Length > 0)
-            {
-                int StartIndexOFURL = Input.IndexOf("<a href=\"/wn/nieuws");
-                int StopAtNewDate = Input.IndexOf("<br><b>");
-
-                //Stops if new day marker is found before a new newsitem
-                if (StartIndexOFURL == -1 || StartIndexOFURL > StopAtNewDate)
-                {
-                    break;
-                }
-
-                Input = Input.Substring(StartIndexOFURL);
-                StartIndexOFURL = 0;
-
-                int EndIndexOFURL = Input.IndexOf("</a>");
-
-                if (EndIndexOFURL == -1)
-                {
-                    break;
-                }
-
-                try
-                {
-                    StartIndexOFURL += "<a href=\"".Length;
-                    string Content = Input.Substring(StartIndexOFURL, EndIndexOFURL - StartIndexOFURL);
-
-                    Input = Input.Substring(EndIndexOFURL + "</a>".Length);
-                    string[] ContentArray = Content.Split('>');
-
-                    if (ContentArray[0].Contains('\"'))
-                    {
-                        ContentArray[0] = ContentArray[0].Substring(0, ContentArray[0].Length - 1);
-                    }
-
-                    NewsItems.Add(new NewsLink(ContentArray[0], ContentArray[1], string.Empty));
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-
-            return NewsItems;
         }
 
         public static List<NewsLink> ParseBusinessNews(string Input)

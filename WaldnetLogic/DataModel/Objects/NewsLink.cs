@@ -11,15 +11,10 @@ namespace WaldnetLogic
     {
         public string URL { get; private set; }
         public string Name { get; private set; }
-        public string Image { get; private set;}
+        public string TimeStamp { get; private set;}
 
-        public NewsLink(string URL, string Name, string Image)
+        public NewsLink(string URL, string Name, string TimeStamp)
         {
-            if (Image == string.Empty)
-            {
-                Image = "Assets/NewsLogo.png";
-            }
-
             if (URL.StartsWith("/"))
             {
                 this.URL = "http://waldnet.nl" + URL;
@@ -30,18 +25,11 @@ namespace WaldnetLogic
             }
 
             this.Name = Name;
-            this.Image = Image;
+            this.TimeStamp = TimeStamp;
         }
-
-        public void SetImage(string Image)
-        {
-            this.Image = Image;
-        }
-
-
         public string ImageURL
         {
-            get { return Image; }
+            get { return string.Empty; }
         }
 
         public string Title
