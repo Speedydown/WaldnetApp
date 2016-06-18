@@ -20,7 +20,8 @@ namespace WaldnetLogic
 
             if (htmlDoc.DocumentNode != null)
             {
-                var HeadlineNodes = htmlDoc.DocumentNode.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("ynhald")) > 0);
+                var YnhaldParent = htmlDoc.DocumentNode.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("ynhald")) > 0).FirstOrDefault();
+                var HeadlineNodes = YnhaldParent.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("ynhald")) > 0);
 
                 foreach (HtmlNode node in HeadlineNodes)
                 {
@@ -55,7 +56,21 @@ namespace WaldnetLogic
             {
                 DateTime Date = DateTime.Now;
 
-                if (nl.TimeStamp.ToLower().Contains("uur"))
+                if (nl.TimeStamp.ToLower().Contains("minu"))
+                {
+                    string minString = nl.TimeStamp.Split(' ').First();
+
+                    int min = 0;
+                    int.TryParse(minString, out min);
+
+                    if (min == 0)
+                    {
+                        continue;
+                    }
+
+                    Date = DateTime.Now.AddHours(-min);
+                }
+                else if (nl.TimeStamp.ToLower().Contains("uur"))
                 {
                     string uurString = nl.TimeStamp.Split(' ').First();
 
@@ -68,8 +83,6 @@ namespace WaldnetLogic
                     }
 
                     Date = DateTime.Now.AddHours(-uur);
-
-                   
                 }
                 else
                 {
