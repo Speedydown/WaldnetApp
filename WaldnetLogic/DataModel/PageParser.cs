@@ -1,4 +1,6 @@
-﻿using BaseLogic.HtmlUtil;
+﻿using BaseLogic.ClientIDHandler;
+using BaseLogic.ExceptionHandler;
+using BaseLogic.HtmlUtil;
 using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
@@ -18,31 +20,40 @@ namespace WaldnetLogic
             htmlDoc.OptionFixNestedTags = true;
             htmlDoc.LoadHtml(Source);
 
-            if (htmlDoc.DocumentNode != null)
+            if (htmlDoc.DocumentNode != null && Source != null && Source.Length > 25)
             {
-                var YnhaldParent = htmlDoc.DocumentNode.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("ynhald")) > 0).FirstOrDefault();
-                var HeadlineNodes = YnhaldParent.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("ynhald")) > 0);
-
-                foreach (HtmlNode node in HeadlineNodes)
+                try
                 {
-                    try
+                    var YnhaldParent = htmlDoc.DocumentNode.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("ynhald")) > 0).FirstOrDefault();
+                    var HeadlineNodes = YnhaldParent.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("ynhald")) > 0);
+
+                    foreach (HtmlNode node in HeadlineNodes)
                     {
-                        int OnclickIndex = node.OuterHtml.IndexOf("/wn/nieuws/");
-                        int Length = node.OuterHtml.IndexOf(".html") + ".html".Length - OnclickIndex;
+                        try
+                        {
+                            int OnclickIndex = node.OuterHtml.IndexOf("/wn/nieuws/");
+                            int Length = node.OuterHtml.IndexOf(".html") + ".html".Length - OnclickIndex;
 
-                        string Url = node.OuterHtml.Substring(OnclickIndex, Length);
-                        string TimeStamp = node.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("haadfak")) > 0).FirstOrDefault().Descendants("br").FirstOrDefault().PreviousSibling.InnerText;
+                            string Url = node.OuterHtml.Substring(OnclickIndex, Length);
+                            string TimeStamp = node.Descendants("div").Where(d => d.Attributes.Count(a => a.Value.Contains("haadfak")) > 0).FirstOrDefault().Descendants("br").FirstOrDefault().PreviousSibling.InnerText;
 
 
-                        string Title = node.Descendants("h2").FirstOrDefault().InnerText;
+                            string Title = node.Descendants("h2").FirstOrDefault().InnerText;
 
-                        NewsLinks.Add(new NewsLink(Url, Title, TimeStamp.Trim()));
-                    }
-                    catch
-                    {
-                        break;
+                            NewsLinks.Add(new NewsLink(Url, Title, TimeStamp.Trim()));
+                        }
+                        catch
+                        {
+                            continue;
+                        }
                     }
                 }
+                catch (Exception e)
+                {
+                    Task t = ExceptionHandler.instance.PostException(new AppException(new Exception("No class ynhald"), (int)ClientIDHandler.AppName.Wâldnet));
+                }
+
+
             }
 
             return OrderNewsLinks(NewsLinks);
@@ -56,41 +67,48 @@ namespace WaldnetLogic
             {
                 DateTime Date = DateTime.Now;
 
-                if (nl.TimeStamp.ToLower().Contains("minu"))
+                try
                 {
-                    string minString = nl.TimeStamp.Split(' ').First();
-
-                    int min = 0;
-                    int.TryParse(minString, out min);
-
-                    if (min == 0)
+                    if (nl.TimeStamp.ToLower().Contains("minu"))
                     {
-                        continue;
+                        string minString = nl.TimeStamp.Split(' ').First();
+
+                        int min = 0;
+                        int.TryParse(minString, out min);
+
+                        if (min == 0)
+                        {
+                            continue;
+                        }
+
+                        Date = DateTime.Now.AddMinutes(-min);
                     }
-
-                    Date = DateTime.Now.AddHours(-min);
-                }
-                else if (nl.TimeStamp.ToLower().Contains("uur"))
-                {
-                    string uurString = nl.TimeStamp.Split(' ').First();
-
-                    int uur = 0;
-                    int.TryParse(uurString, out uur);
-
-                    if (uur == 0)
+                    else if (nl.TimeStamp.ToLower().Contains("uur"))
                     {
-                        continue;
+                        string uurString = nl.TimeStamp.Split(' ').First();
+
+                        int uur = 0;
+                        int.TryParse(uurString, out uur);
+
+                        if (uur == 0)
+                        {
+                            continue;
+                        }
+
+                        Date = DateTime.Now.AddHours(-uur);
                     }
+                    else
+                    {
+                        string daystring = nl.TimeStamp.Split(' ')[1];
+                        string MonthString = nl.TimeStamp.Split(' ')[2];
 
-                    Date = DateTime.Now.AddHours(-uur);
+                        Date = DateTime.Now;
+                        DateTime.TryParse(daystring + " " + MonthString + " " + DateTime.Now.Year, out Date);
+                    }
                 }
-                else
+                catch
                 {
-                    string daystring = nl.TimeStamp.Split(' ')[1];
-                    string MonthString = nl.TimeStamp.Split(' ')[2];
 
-                    Date = DateTime.Now;
-                    DateTime.TryParse(daystring + " " + MonthString + " " + DateTime.Now.Year, out Date);
                 }
 
                 NewsDay CurrentNewsDay = NewsDays.FirstOrDefault(nd => nd.DayName == Date.ToString("dddd dd MMMM"));
