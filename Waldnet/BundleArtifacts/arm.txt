@@ -1,4 +1,4 @@
-MainPackage=C:\Users\speed\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\Waldnet_2016.621.1934.0_ARM.appx
-SymbolPackage=C:\Users\speed\Documents\GitHub\WaldnetApp\Waldnet\AppPackages\Waldnet_2016.621.1934.0_Test\Waldnet_2016.621.1934.0_ARM.appxsym
-ResourcePack=C:\Users\speed\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\Waldnet_2016.621.1934.0_scale-100.appx
-ResourcePack=C:\Users\speed\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\Waldnet_2016.621.1934.0_scale-140.appx
+MainPackage=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\Waldnet_2016.703.2327.0_ARM.appx
+SymbolPackage=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\AppPackages\Waldnet_2016.703.2327.0_Test\Waldnet_2016.703.2327.0_ARM.appxsym
+ResourcePack=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\Waldnet_2016.703.2327.0_scale-100.appx
+ResourcePack=C:\Users\Teake\Documents\GitHub\WaldnetApp\Waldnet\bin\ARM\Release\Waldnet_2016.703.2327.0_scale-140.appx

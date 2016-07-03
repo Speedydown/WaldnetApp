@@ -327,7 +327,7 @@ namespace WaldnetLogic
 
             string Input = await DataHandler.GetDataFromURL(URL);
 
-            int StartIndex = Input.IndexOf("<table cellspacing=0 cellpadding=0 border=0><tr><td>");
+            int StartIndex = Input.IndexOf("contentall");
 
             if (StartIndex == -1)
             {
@@ -335,7 +335,7 @@ namespace WaldnetLogic
             }
 
             Input = Input.Substring(StartIndex);
-            Input = Input.Substring(0, Input.ToLower().IndexOf("</div>"));
+            Input = Input.Substring(0, Input.ToLower().IndexOf("reklame"));
 
             while (Input.Length > 0)
             {
